@@ -1,5 +1,5 @@
 """
-AURA - Sistema Multiagentes de IA para Recomendaciones de Productos
+AURA - Sistema Multiagentes de IA con Recolección Dinámica de Información
 """
 import sys
 import os
@@ -21,7 +21,7 @@ def initialize_system():
     Inicializa el sistema cargando documentos y creando el vectorstore
     """
     print("=" * 60)
-    print("🚀 AURA - Sistema de Recomendaciones con IA")
+    print("🚀 AURA - Sistema Dinámico de Recomendaciones con IA")
     print("=" * 60)
     print()
     
@@ -91,9 +91,9 @@ def run_interactive_session(orchestrator: DynamicMultiAgentOrchestrator):
         orchestrator: Orquestador del sistema multiagentes
     """
     print("\n" + "=" * 60)
-    print("💬 Modo Conversacional Inteligente")
+    print("💬 Modo Conversacional Dinámico")
     print("=" * 60)
-    print("🤖 El asistente genera preguntas adaptadas a tus respuestas")
+    print("🤖 Las preguntas se adaptan a tus respuestas")
     print("📝 Escribe 'salir' para terminar, 'nuevo' para nueva sesión")
     print()
     
@@ -162,3 +162,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
