@@ -4,7 +4,7 @@ Orquestador del sistema multiagentes
 from typing import Dict, Any, Optional
 from enum import Enum
 
-from src.agents.information_collector import InformationCollectorAgent
+from src.agents.questioner import QuestionerAgent
 from src.agents.preference_analyzer import PreferenceAnalyzerAgent
 from src.agents.recommender import RecommenderAgent
 from src.rag.vector_store import VectorStore
@@ -33,8 +33,8 @@ class MultiAgentOrchestrator:
         """
         self.vector_store = vector_store
         
-        # Inicializar agentes
-        self.collector = InformationCollectorAgent()
+        # Inicializar agentes (usando QuestionerAgent para preguntas dinámicas)
+        self.questioner = QuestionerAgent()
         self.analyzer = PreferenceAnalyzerAgent()
         self.recommender = RecommenderAgent(vector_store)
         
@@ -50,7 +50,7 @@ class MultiAgentOrchestrator:
             Primera pregunta para el usuario
         """
         # Reiniciar agentes
-        self.collector.reset()
+        self.questioner.reset()
         self.analyzer.clear_memory()
         self.recommender.clear_memory()
         
@@ -58,10 +58,10 @@ class MultiAgentOrchestrator:
         self.state = WorkflowState.COLLECTING_INFO
         self.workflow_data = {}
         
-        # Obtener primera pregunta
-        question = self.collector.get_next_question()
+        # Obtener primera pregunta (generada dinámicamente por el LLM)
+        question = self.questioner.generate_next_question()
         
-        return f"👋 ¡Hola! Soy AURA, tu asistente de recomendaciones.\n\n{question}"
+        return question if question else "¡Hola! 👋 ¿Qué tipo de producto estás buscando hoy?"
     
     def process_user_input(self, user_input: str) -> Dict[str, Any]:
         """
@@ -88,7 +88,7 @@ class MultiAgentOrchestrator:
     
     def _handle_collection(self, user_input: str) -> Dict[str, Any]:
         """
-        Maneja la recolección de información
+        Maneja la recolección de información con preguntas contextuales dinámicas
         
         Args:
             user_input: Respuesta del usuario
@@ -96,16 +96,18 @@ class MultiAgentOrchestrator:
         Returns:
             Siguiente pregunta o inicio del análisis
         """
-        # Guardar respuesta
-        self.collector.add_response(user_input)
+        # Guardar respuesta y actualizar contexto
+        self.questioner.add_user_response(user_input)
         
-        # Verificar si hay más preguntas
-        if self.collector.has_more_questions():
-            next_question = self.collector.get_next_question()
+        # Generar siguiente pregunta contextual (el LLM decide basado en las respuestas previas)
+        next_question = self.questioner.generate_next_question()
+        
+        # Si hay siguiente pregunta, devolverla
+        if next_question:
             return {
                 "message": next_question,
                 "status": "collecting",
-                "progress": f"{self.collector.current_question_index}/{len(self.collector.questions)}"
+                "progress": self.questioner.get_progress()
             }
         
         # No hay más preguntas, procesar información
@@ -119,12 +121,12 @@ class MultiAgentOrchestrator:
             Recomendaciones finales
         """
         try:
-            # Paso 1: Analizar respuestas del usuario
+            # Paso 1: Analizar respuestas del usuario (usando QuestionerAgent)
             print("\n🔍 Analizando tus respuestas...")
             self.state = WorkflowState.ANALYZING_PREFERENCES
             
-            collector_result = self.collector.process({})
-            self.workflow_data['user_analysis'] = collector_result['analysis']
+            questioner_result = self.questioner.process({})
+            self.workflow_data['user_analysis'] = questioner_result['structured_analysis']
             
             # Paso 2: Generar criterios de búsqueda
             print("📊 Generando criterios de búsqueda...")
@@ -243,7 +245,7 @@ Por favor, responde la pregunta:""")
     
     def reset(self):
         """Reinicia el orquestador"""
-        self.collector.reset()
+        self.questioner.reset()
         self.analyzer.clear_memory()
         self.recommender.clear_memory()
         self.state = WorkflowState.INIT
