@@ -1,0 +1,225 @@
+{
+  "scenarios": [
+    {
+      "id": "scenario_1",
+      "name": "Usuario básico - Teléfono económico",
+      "category": "telefono",
+      "difficulty": "easy",
+      "conversation": [
+        "Busco un teléfono",
+        "Para uso diario, whatsapp y redes sociales",
+        "Mi presupuesto es hasta 300 euros",
+        "Que tenga buena batería",
+        "No tengo preferencia de marca específica"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "teléfono",
+        "presupuesto_min": null,
+        "presupuesto_max": 300.0,
+        "uso_principal": "uso diario, whatsapp y redes sociales",
+        "caracteristicas_clave": ["buena batería"],
+        "preferencias_marca": []
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["batería", "económico", "uso básico"]
+      }
+    },
+    {
+      "id": "scenario_2",
+      "name": "Usuario exigente - Laptop para gaming",
+      "category": "laptop",
+      "difficulty": "medium",
+      "conversation": [
+        "Necesito una laptop potente",
+        "Principalmente para juegos AAA y streaming",
+        "Presupuesto entre 1500 y 2000 euros",
+        "Mínimo RTX 4060, 16GB RAM y SSD de 1TB",
+        "Prefiero marcas como ASUS ROG o MSI"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "laptop",
+        "presupuesto_min": 1500.0,
+        "presupuesto_max": 2000.0,
+        "uso_principal": "juegos AAA y streaming",
+        "caracteristicas_clave": ["RTX 4060", "16GB RAM", "SSD 1TB"],
+        "preferencias_marca": ["ASUS ROG", "MSI"]
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["gaming", "RTX", "potente", "rendimiento"]
+      }
+    },
+    {
+      "id": "scenario_3",
+      "name": "Usuario profesional - Laptop para desarrollo",
+      "category": "laptop",
+      "difficulty": "medium",
+      "conversation": [
+        "Busco una laptop para programación",
+        "Trabajo con Docker, máquinas virtuales y desarrollo web",
+        "Entre 800 y 1200 euros",
+        "Necesito al menos 16GB RAM y procesador rápido",
+        "Prefiero marcas confiables, sin preferencia específica"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "laptop",
+        "presupuesto_min": 800.0,
+        "presupuesto_max": 1200.0,
+        "uso_principal": "programación, Docker, máquinas virtuales",
+        "caracteristicas_clave": ["16GB RAM", "procesador rápido"],
+        "preferencias_marca": []
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["programación", "desarrollo", "RAM", "procesador"]
+      }
+    },
+    {
+      "id": "scenario_4",
+      "name": "Usuario estudiante - Tablet para estudiar",
+      "category": "tablet",
+      "difficulty": "easy",
+      "conversation": [
+        "Necesito una tablet",
+        "Para tomar notas en clase y ver videos educativos",
+        "Máximo 400 euros",
+        "Que sea ligera y con buena pantalla",
+        "Me gusta Apple pero está fuera de presupuesto"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "tablet",
+        "presupuesto_min": null,
+        "presupuesto_max": 400.0,
+        "uso_principal": "tomar notas, ver videos educativos",
+        "caracteristicas_clave": ["ligera", "buena pantalla"],
+        "preferencias_marca": ["Apple"],
+        "restricciones": ["presupuesto limitado"]
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["tablet", "estudiante", "notas", "educativo"]
+      }
+    },
+    {
+      "id": "scenario_5",
+      "name": "Usuario vago - Respuestas ambiguas",
+      "category": "unclear",
+      "difficulty": "hard",
+      "conversation": [
+        "Necesito algo para trabajar",
+        "No sé, algo normal",
+        "No tengo presupuesto definido",
+        "Lo que sea está bien",
+        "Sin preferencias"
+      ],
+      "expected_extraction": {
+        "categoria_producto": null,
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "uso_principal": "trabajar",
+        "caracteristicas_clave": [],
+        "preferencias_marca": []
+      },
+      "expected_outcome": {
+        "should_find_products": false,
+        "min_products": 0,
+        "max_questions": 5,
+        "relevance_keywords": [],
+        "notes": "Debería manejar información insuficiente"
+      }
+    },
+    {
+      "id": "scenario_6",
+      "name": "Usuario específico - Audiófilo",
+      "category": "auriculares",
+      "difficulty": "hard",
+      "conversation": [
+        "Busco auriculares de alta fidelidad",
+        "Para escuchar música clásica y jazz en casa",
+        "Presupuesto hasta 500 euros",
+        "Necesito cancelación de ruido activa y drivers de 40mm mínimo",
+        "Estoy entre Sony WH-1000XM5 o Bose QuietComfort Ultra"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "auriculares",
+        "presupuesto_min": null,
+        "presupuesto_max": 500.0,
+        "uso_principal": "música clásica y jazz en casa",
+        "caracteristicas_clave": ["cancelación de ruido activa", "drivers 40mm", "alta fidelidad"],
+        "preferencias_marca": ["Sony", "Bose"]
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["auriculares", "alta fidelidad", "cancelación ruido", "premium"]
+      }
+    },
+    {
+      "id": "scenario_7",
+      "name": "Usuario urgente - Reemplazo rápido",
+      "category": "telefono",
+      "difficulty": "medium",
+      "conversation": [
+        "Se me rompió el móvil y necesito uno YA",
+        "Lo necesito para trabajar, hago muchas videollamadas",
+        "Puedo gastar hasta 600 euros",
+        "Buena cámara frontal y batería que dure todo el día",
+        "Que tenga buena pantalla para leer documentos"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "teléfono",
+        "presupuesto_min": null,
+        "presupuesto_max": 600.0,
+        "uso_principal": "trabajo, videollamadas",
+        "caracteristicas_clave": ["buena cámara frontal", "batería todo el día", "buena pantalla"],
+        "nivel_urgencia": "inmediato",
+        "restricciones": []
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["videollamadas", "batería", "cámara", "profesional"]
+      }
+    },
+    {
+      "id": "scenario_8",
+      "name": "Usuario comparativo - Ya investigó",
+      "category": "laptop",
+      "difficulty": "easy",
+      "conversation": [
+        "Estoy decidiendo entre MacBook Air M2 y Dell XPS 13",
+        "Lo usaré para diseño gráfico y edición de video ligera",
+        "Presupuesto 1300 euros aproximadamente",
+        "¿Cuál me recomiendas?",
+        "Necesito portabilidad y buena pantalla"
+      ],
+      "expected_extraction": {
+        "categoria_producto": "laptop",
+        "presupuesto_min": null,
+        "presupuesto_max": 1300.0,
+        "uso_principal": "diseño gráfico, edición de video ligera",
+        "caracteristicas_clave": ["portabilidad", "buena pantalla"],
+        "preferencias_marca": ["Apple", "Dell"],
+        "contexto_adicional": "Comparación entre modelos específicos"
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": ["MacBook", "Dell XPS", "diseño", "portátil"]
+      }
+    }
+  ]
+}
+
