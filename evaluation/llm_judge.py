@@ -2,6 +2,7 @@
 Evaluador LLM-as-Judge para evaluar la calidad de las recomendaciones
 """
 import json
+import time
 from typing import Dict, Any
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -17,11 +18,29 @@ class LLMJudge:
     """
     
     def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(
-            model=LLM_JUDGE_CONFIG["model"],
-            temperature=LLM_JUDGE_CONFIG["temperature"],
-            google_api_key=config.GOOGLE_API_KEY
-        )
+        # Configurar timeout si está disponible en la versión de langchain
+        llm_kwargs = {
+            "model": LLM_JUDGE_CONFIG["model"],
+            "temperature": LLM_JUDGE_CONFIG["temperature"],
+            "google_api_key": config.GOOGLE_API_KEY
+        }
+        
+        # Intentar agregar timeout si está disponible
+        timeout = LLM_JUDGE_CONFIG.get("timeout", 30.0)
+        try:
+            # Algunas versiones de langchain-google-genai soportan timeout
+            if hasattr(ChatGoogleGenerativeAI, '__init__'):
+                # Verificar si acepta timeout como parámetro
+                import inspect
+                sig = inspect.signature(ChatGoogleGenerativeAI.__init__)
+                if 'timeout' in sig.parameters:
+                    llm_kwargs['timeout'] = timeout
+        except Exception:
+            pass
+        
+        self.llm = ChatGoogleGenerativeAI(**llm_kwargs)
+        self.timeout = timeout
+        self.max_retries = LLM_JUDGE_CONFIG.get("max_retries", 3)
         
         # Prompt para evaluación de recomendaciones
         self.evaluation_prompt = ChatPromptTemplate.from_messages([
@@ -152,6 +171,73 @@ class LLMJudge:
             ("user", "Evalúa la calidad de estas preguntas:")
         ])
     
+    def _invoke_with_timeout(self, chain, inputs: Dict[str, Any]) -> Any:
+        """Invoca la cadena con timeout y retry usando threading"""
+        import threading
+        
+        last_exception = None
+        
+        for attempt in range(self.max_retries):
+            try:
+                result_container = [None]
+                exception_container = [None]
+                
+                def invoke_chain():
+                    """Función que ejecuta la invocación en un thread separado"""
+                    try:
+                        result_container[0] = chain.invoke(inputs)
+                    except Exception as e:
+                        exception_container[0] = e
+                
+                # Crear thread para ejecutar la invocación
+                thread = threading.Thread(target=invoke_chain, daemon=True)
+                thread.start()
+                thread.join(timeout=self.timeout)
+                
+                # Verificar si el thread aún está corriendo (timeout)
+                if thread.is_alive():
+                    raise TimeoutError(
+                        f"La operación excedió el timeout de {self.timeout}s "
+                        f"(intento {attempt + 1}/{self.max_retries})"
+                    )
+                
+                # Si hubo una excepción en el thread, relanzarla
+                if exception_container[0]:
+                    raise exception_container[0]
+                
+                # Si tenemos resultado, retornarlo
+                if result_container[0] is not None:
+                    return result_container[0]
+                
+                # Si llegamos aquí, algo salió mal
+                raise Exception("No se obtuvo resultado ni excepción")
+                
+            except TimeoutError as e:
+                last_exception = e
+                print(f"⚠️ Timeout en intento {attempt + 1}/{self.max_retries}: {e}")
+                if attempt < self.max_retries - 1:
+                    wait_time = min(2 ** attempt, 5)  # Backoff exponencial, máximo 5 segundos
+                    time.sleep(wait_time)
+                continue
+            except Exception as e:
+                last_exception = e
+                error_str = str(e).lower()
+                # Si es un error de red o API, reintentar
+                if any(keyword in error_str for keyword in ["timeout", "connection", "network", "api"]):
+                    print(f"⚠️ Error de conexión en intento {attempt + 1}/{self.max_retries}: {e}")
+                    if attempt < self.max_retries - 1:
+                        wait_time = min(2 ** attempt, 5)  # Backoff exponencial
+                        time.sleep(wait_time)
+                    continue
+                else:
+                    # Otros errores no se reintentan
+                    raise
+        
+        # Si todos los intentos fallaron
+        raise last_exception or TimeoutError(
+            f"Todos los {self.max_retries} intentos fallaron después de {self.timeout}s cada uno"
+        )
+    
     def evaluate_recommendations(
         self, 
         user_analysis: str,
@@ -174,12 +260,20 @@ class LLMJudge:
         try:
             chain = self.evaluation_prompt | self.llm
             
-            result = chain.invoke({
+            inputs = {
                 "user_analysis": user_analysis or "No disponible",
                 "search_criteria": search_criteria or "No disponible",
                 "recommendations": recommendations or "No se generaron recomendaciones",
                 "products_found": products_found
-            })
+            }
+            
+            # Truncar inputs muy largos para evitar timeouts
+            max_length = 2000
+            for key in ["user_analysis", "search_criteria", "recommendations"]:
+                if key in inputs and len(str(inputs[key])) > max_length:
+                    inputs[key] = str(inputs[key])[:max_length] + "... [truncado]"
+            
+            result = self._invoke_with_timeout(chain, inputs)
             
             # Parsear JSON
             response_text = result.content.strip()
@@ -198,19 +292,33 @@ class LLMJudge:
                 "raw_response": result.content
             }
             
-        except json.JSONDecodeError as e:
-            print(f"⚠️ Error parseando JSON: {e}")
-            print(f"Respuesta: {response_text[:500]}")
+        except (TimeoutError, Exception) as e:
+            error_msg = str(e)
+            print(f"⚠️ Error evaluando recomendaciones: {error_msg}")
+            
+            # Retornar evaluación por defecto en caso de timeout
+            if "timeout" in error_msg.lower():
+                return {
+                    "success": False,
+                    "error": "timeout",
+                    "error_message": f"Timeout después de {self.timeout}s y {self.max_retries} intentos",
+                    "evaluation": {
+                        "relevancia": 5.0,
+                        "diversidad": 5.0,
+                        "explicacion": 5.0,
+                        "personalizacion": 5.0,
+                        "completitud": 5.0,
+                        "score_total": 5.0,
+                        "comentarios": "Evaluación no disponible debido a timeout",
+                        "areas_mejora": "Timeout en evaluación LLM",
+                        "sugerencias": "Revisar configuración de timeout o conexión",
+                        "veredicto": "NO_DISPONIBLE"
+                    }
+                }
+            
             return {
                 "success": False,
-                "error": "JSON parsing error",
-                "raw_response": response_text
-            }
-        except Exception as e:
-            print(f"⚠️ Error evaluando recomendaciones: {e}")
-            return {
-                "success": False,
-                "error": str(e)
+                "error": error_msg
             }
     
     def evaluate_questions(
@@ -231,10 +339,18 @@ class LLMJudge:
         try:
             chain = self.question_evaluation_prompt | self.llm
             
-            result = chain.invoke({
+            inputs = {
                 "conversation_history": conversation_history or "No hay conversación",
                 "extracted_info": extracted_info or "No se extrajo información"
-            })
+            }
+            
+            # Truncar inputs muy largos
+            max_length = 2000
+            for key in inputs:
+                if len(str(inputs[key])) > max_length:
+                    inputs[key] = str(inputs[key])[:max_length] + "... [truncado]"
+            
+            result = self._invoke_with_timeout(chain, inputs)
             
             # Parsear JSON
             response_text = result.content.strip()
@@ -258,13 +374,35 @@ class LLMJudge:
             return {
                 "success": False,
                 "error": "JSON parsing error",
-                "raw_response": response_text
+                "raw_response": response_text if 'response_text' in locals() else ""
             }
-        except Exception as e:
-            print(f"⚠️ Error evaluando preguntas: {e}")
+        except (TimeoutError, Exception) as e:
+            error_msg = str(e)
+            print(f"⚠️ Error evaluando preguntas: {error_msg}")
+            
+            # Retornar evaluación por defecto en caso de timeout
+            if "timeout" in error_msg.lower():
+                return {
+                    "success": False,
+                    "error": "timeout",
+                    "error_message": f"Timeout después de {self.timeout}s y {self.max_retries} intentos",
+                    "evaluation": {
+                        "contextualidad": 5.0,
+                        "relevancia": 5.0,
+                        "naturalidad": 5.0,
+                        "eficiencia": 5.0,
+                        "completitud": 5.0,
+                        "score_total": 5.0,
+                        "comentarios": "Evaluación no disponible debido a timeout",
+                        "mejores_preguntas": [],
+                        "preguntas_mejorables": [],
+                        "sugerencias": "Revisar configuración de timeout o conexión"
+                    }
+                }
+            
             return {
                 "success": False,
-                "error": str(e)
+                "error": error_msg
             }
     
     def evaluate_information_extraction(

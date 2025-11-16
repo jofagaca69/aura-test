@@ -41,7 +41,9 @@ THRESHOLDS = {
 LLM_JUDGE_CONFIG = {
     "model": "gemini-2.5-flash-lite",
     "temperature": 0.1,  # Baja temperatura para evaluación consistente
-    "max_retries": 3
+    "max_retries": 3,
+    "timeout": 30.0,  # Timeout de 30 segundos para llamadas LLM
+    "request_timeout": 30.0  # Timeout de request HTTP
 }
 
 # Configuración de reportes
