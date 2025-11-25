@@ -55,7 +55,7 @@ Por favor, genera criterios de búsqueda detallados y optimizados.""")
         chain = prompt | self.llm
         
         # Procesar
-        result = chain.invoke({"user_analysis": user_analysis})
+        result = self._invoke_with_rate_limit(chain, {"user_analysis": user_analysis})
         
         # Generar query de búsqueda optimizada
         search_query = self._generate_search_query(user_analysis, result.content)
@@ -96,7 +96,7 @@ Genera la consulta de búsqueda:""")
         ])
         
         chain = prompt | self.llm
-        result = chain.invoke({
+        result = self._invoke_with_rate_limit(chain, {
             "user_analysis": user_analysis,
             "criteria": criteria
         })

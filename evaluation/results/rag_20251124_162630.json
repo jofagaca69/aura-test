@@ -1,0 +1,200 @@
+{
+  "component": "RAG",
+  "timestamp": "2025-11-24T16:29:31.259839",
+  "vectorstore_health": {
+    "timestamp": "2025-11-24T16:29:30.978083",
+    "vectorstore_loaded": true,
+    "checks": {
+      "basic_search": {
+        "passed": true,
+        "response_time": 0.20912599563598633,
+        "results_returned": 1
+      },
+      "document_diversity": {
+        "passed": true,
+        "unique_sources": 1,
+        "total_results": 10
+      }
+    },
+    "overall_health": "HEALTHY"
+  },
+  "total_tests": 1,
+  "successful_tests": 1,
+  "failed_tests": 0,
+  "success_rate": 1.0,
+  "metrics": {
+    "avg_search_time": 0.03060317039489746,
+    "avg_relevance_score": 1.0,
+    "avg_results_count": 10.0
+  },
+  "thresholds": {
+    "precision_at_5": 0.8,
+    "recall_at_10": 0.7,
+    "search_time_max": 2.0
+  },
+  "all_thresholds_passed": {
+    "search_time": true,
+    "relevance": true
+  },
+  "detailed_results": [
+    {
+      "scenario_id": "pos_scenario_1",
+      "scenario_name": "Usuario básico - AIO para pequeño comercio",
+      "timestamp": "2025-11-24T16:29:31.259839",
+      "full_query_test": {
+        "query": "Necesito un equipo AIO para mi tienda Es para punto de venta básico, facturación y control de inventario Que tenga pantalla táctil Algo económico pero confiable, no tengo límite de presupuesto No tengo preferencia de marca",
+        "k": 10,
+        "num_results": 10,
+        "search_time": 0.03060317039489746,
+        "relevance_score": 1.0,
+        "avg_similarity": 0.0,
+        "expected_keywords": [
+          "aio",
+          "all-in-one",
+          "pantalla táctil",
+          "punto de venta",
+          "básico",
+          "táctil"
+        ],
+        "keyword_matches": 10,
+        "passed_time_threshold": true,
+        "results_preview": [
+          {
+            "content": "Tipo: AIO\nMarca: ELO\nProcesador: J1900\nRAM: 4\nSSD: 128\nTamaño de pantalla: 15.6\nPeriférico: Pantalla Trasera, VFD, MSR\nVESA: No tiene\nResolución de pantalla: 1366 x 768\nBrillo de pantalla: 220.0\nVida ...",
+            "metadata": {
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx",
+              "row": 9,
+              "columns": "Tipo, Marca, Modelo, Procesador, RAM, SSD, Tamaño de pantalla, Periférico, VESA, Resolución de pantalla, Brillo de pantalla, Vida Útil de pantalla, Tecnología Touch, Multitoques, Puertos USB 2.0\n, Puertos USB 3.0\n, Puertos seriales, Inalambrico, Otros Puertos, Certificaciones, Certificación IP, Peso Kg, Dimensiones, Otras Características, Enlace",
+              "sheet": "AIO",
+              "type": "excel"
+            }
+          },
+          {
+            "content": "Tipo: AIO\nMarca: BARPOS\nModelo: E200 \nProcesador: J6412 \nRAM: 4\nSSD: 128\nTamaño de pantalla: 15.0\nPeriférico: Pantalla Trasera, VFD, MSR\nVESA: No tiene\nResolución de pantalla: 1024 x 768 pixeles\nBrill...",
+            "metadata": {
+              "sheet": "AIO",
+              "columns": "Tipo, Marca, Modelo, Procesador, RAM, SSD, Tamaño de pantalla, Periférico, VESA, Resolución de pantalla, Brillo de pantalla, Vida Útil de pantalla, Tecnología Touch, Multitoques, Puertos USB 2.0\n, Puertos USB 3.0\n, Puertos seriales, Inalambrico, Otros Puertos, Certificaciones, Certificación IP, Peso Kg, Dimensiones, Otras Características, Enlace",
+              "row": 13,
+              "type": "excel",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx"
+            }
+          },
+          {
+            "content": "Tipo: AIO\nMarca: ZKTECO\nProcesador: J1900\nRAM: 2\nSSD: 32\nTamaño de pantalla: 15.0\nPeriférico: Pantalla Trasera, VFD, MSR\nVESA: No tiene\nResolución de pantalla: 1024 x 768 pixeles\nTecnología Touch: Cap...",
+            "metadata": {
+              "sheet": "AIO",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx",
+              "type": "excel",
+              "row": 7,
+              "columns": "Tipo, Marca, Modelo, Procesador, RAM, SSD, Tamaño de pantalla, Periférico, VESA, Resolución de pantalla, Brillo de pantalla, Vida Útil de pantalla, Tecnología Touch, Multitoques, Puertos USB 2.0\n, Puertos USB 3.0\n, Puertos seriales, Inalambrico, Otros Puertos, Certificaciones, Certificación IP, Peso Kg, Dimensiones, Otras Características, Enlace"
+            }
+          }
+        ]
+      },
+      "category_test": {
+        "query": "aio",
+        "k": 5,
+        "num_results": 5,
+        "search_time": 0.014108657836914062,
+        "relevance_score": 0.0,
+        "avg_similarity": 0.0,
+        "expected_keywords": [
+          "aio"
+        ],
+        "keyword_matches": 0,
+        "passed_time_threshold": true,
+        "results_preview": [
+          {
+            "content": "Tipo: Impresoras\nMarca: EPSON\nReferencia\n: TMT 88 \nTecnologia: Termica16\nMétodo de impresión\n: Termico Directa\nVelocidad de Impresión\n: 300\nResolución: 203.0\nCódigos 1D\n: : UPC-A, UPC-E, JAN13(EAN13),...",
+            "metadata": {
+              "columns": "Tipo, Marca, Referencia\n, Tecnologia, Método de impresión\n, Velocidad de Impresión\n, Resolución, Códigos 1D\n, Códigos 2D, Impresión Marca de agua, Ancho de papel, Soporte para pared, Confiabilidad de impresión TPH, Memoria RAM, Memoria Flash, Confiabilidad del cortador, Puertos de conexión, Emulación, Drivers, Sensores, Dimensiones (LxAxAH), Peso Kg, Color, Temperatura de trabajo, Otras Caracteristicas, Enlace",
+              "type": "excel",
+              "row": 16,
+              "sheet": "IMPRESORAS",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx"
+            }
+          },
+          {
+            "content": "Tipo: Impresoras\nMarca: EPSON\nReferencia\n: TM-T20\nTecnologia: Termica15\nMétodo de impresión\n: Termico Directa\nVelocidad de Impresión\n: 250\nResolución: 203.0\nCódigos 1D\n: : UPC-A, UPC-E, JAN13(EAN13), ...",
+            "metadata": {
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx",
+              "columns": "Tipo, Marca, Referencia\n, Tecnologia, Método de impresión\n, Velocidad de Impresión\n, Resolución, Códigos 1D\n, Códigos 2D, Impresión Marca de agua, Ancho de papel, Soporte para pared, Confiabilidad de impresión TPH, Memoria RAM, Memoria Flash, Confiabilidad del cortador, Puertos de conexión, Emulación, Drivers, Sensores, Dimensiones (LxAxAH), Peso Kg, Color, Temperatura de trabajo, Otras Caracteristicas, Enlace",
+              "row": 15,
+              "type": "excel",
+              "sheet": "IMPRESORAS"
+            }
+          },
+          {
+            "content": "Tipo: Impresoras\nMarca: CUSTOM\nReferencia\n: K3\nTecnologia: Termica21\nMétodo de impresión\n: Termico Directa\nVelocidad de Impresión\n: 350\nResolución: 203.0\nCódigos 1D\n: UPCA, UPCE, EAN13, EAN8, CODE39, ...",
+            "metadata": {
+              "row": 21,
+              "columns": "Tipo, Marca, Referencia\n, Tecnologia, Método de impresión\n, Velocidad de Impresión\n, Resolución, Códigos 1D\n, Códigos 2D, Impresión Marca de agua, Ancho de papel, Soporte para pared, Confiabilidad de impresión TPH, Memoria RAM, Memoria Flash, Confiabilidad del cortador, Puertos de conexión, Emulación, Drivers, Sensores, Dimensiones (LxAxAH), Peso Kg, Color, Temperatura de trabajo, Otras Caracteristicas, Enlace",
+              "sheet": "IMPRESORAS",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx",
+              "type": "excel"
+            }
+          }
+        ]
+      },
+      "features_test": {
+        "query": "pantalla táctil",
+        "k": 5,
+        "num_results": 5,
+        "search_time": 0.012897014617919922,
+        "relevance_score": 0.0,
+        "avg_similarity": 0.0,
+        "expected_keywords": [
+          "pantalla táctil"
+        ],
+        "keyword_matches": 0,
+        "passed_time_threshold": true,
+        "results_preview": [
+          {
+            "content": "Tipo: Monitores\nMarca: ELO TOUCH\nReferencia: IntelliTouch - 1515L\nTamaño de pantalla: 15.6\nAspect Ratio: 16:9\nTecnología Panel Touch: Capacitivo\nNumero de toques: 1\nResolución de pantalla: 1366 x 768\n...",
+            "metadata": {
+              "sheet": "MONITORES",
+              "type": "excel",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx",
+              "row": 1,
+              "columns": "Tipo, Marca, Referencia, Tamaño de pantalla, Aspect Ratio, Tecnología Panel Touch, Numero de toques, Resolución de pantalla, Brillo, Interface Touch, Conexión, MTBF, Montaje VESA, Material del Equipo, Certificaciones, Enlace"
+            }
+          },
+          {
+            "content": "Tipo: Monitores\nMarca: 3NSTAR2\nReferencia: TCM008\nTamaño de pantalla: 15.0\nAspect Ratio: 4:3\nTecnología Panel Touch: Capacitivo\nNumero de toques: 10\nResolución de pantalla: 1024 x 768\nBrillo: 400\nInte...",
+            "metadata": {
+              "row": 3,
+              "sheet": "MONITORES",
+              "type": "excel",
+              "columns": "Tipo, Marca, Referencia, Tamaño de pantalla, Aspect Ratio, Tecnología Panel Touch, Numero de toques, Resolución de pantalla, Brillo, Interface Touch, Conexión, MTBF, Montaje VESA, Material del Equipo, Certificaciones, Enlace",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx"
+            }
+          },
+          {
+            "content": "Tipo: Monitores\nMarca: 3NSTAR\nReferencia: TCM010\nTamaño de pantalla: 15.0\nAspect Ratio: 4:3\nTecnología Panel Touch: Capacitivo\nNumero de toques: 10\nResolución de pantalla: 1024 x 768\nBrillo: 400\nInter...",
+            "metadata": {
+              "row": 2,
+              "type": "excel",
+              "sheet": "MONITORES",
+              "columns": "Tipo, Marca, Referencia, Tamaño de pantalla, Aspect Ratio, Tecnología Panel Touch, Numero de toques, Resolución de pantalla, Brillo, Interface Touch, Conexión, MTBF, Montaje VESA, Material del Equipo, Certificaciones, Enlace",
+              "source": "C:\\Users\\jofa7\\Desktop\\Projects\\aura-test\\data\\uploads\\skus_competencia.xlsx"
+            }
+          }
+        ]
+      },
+      "expected_outcome": {
+        "should_find_products": true,
+        "min_products": 1,
+        "max_questions": 5,
+        "relevance_keywords": [
+          "aio",
+          "all-in-one",
+          "pantalla táctil",
+          "punto de venta",
+          "básico",
+          "táctil"
+        ]
+      },
+      "overall_success": true
+    }
+  ]
+}

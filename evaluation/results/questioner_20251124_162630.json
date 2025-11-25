@@ -1,0 +1,122 @@
+{
+  "component": "QuestionerAgent",
+  "timestamp": "2025-11-24T16:29:30.976028",
+  "total_tests": 1,
+  "successful_tests": 1,
+  "failed_tests": 0,
+  "success_rate": 1.0,
+  "metrics": {
+    "avg_extraction_accuracy": 80.95238095238095,
+    "avg_questions_asked": 4.0,
+    "avg_information_score": 80.0
+  },
+  "thresholds": {
+    "extraction_accuracy": 0.75,
+    "max_questions": 5,
+    "information_score_min": 50.0
+  },
+  "all_thresholds_passed": {
+    "extraction_accuracy": true,
+    "max_questions": true
+  },
+  "detailed_results": [
+    {
+      "scenario_id": "pos_scenario_1",
+      "scenario_name": "Usuario básico - AIO para pequeño comercio",
+      "timestamp": "2025-11-24T16:27:30.957843",
+      "execution_time": 51.301704,
+      "questions_asked": 4,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?",
+        "Dado que el equipo es para punto de venta básico, facturación y control de inventario, ¿hay alguna marca en particular que prefieras o alguna que quieras evitar?",
+        "¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?"
+      ],
+      "user_responses": [
+        "Necesito un equipo AIO para mi tienda",
+        "Es para punto de venta básico, facturación y control de inventario",
+        "Que tenga pantalla táctil",
+        "Algo económico pero confiable, no tengo límite de presupuesto",
+        "No tengo preferencia de marca"
+      ],
+      "extracted_info": {
+        "categoria_producto": "equipo AIO",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "punto de venta básico, facturación y control de inventario",
+        "caracteristicas_clave": [
+          "pantalla táctil",
+          "económico",
+          "confiable"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "aio",
+          "equipo aio",
+          "equipo all-in-one"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "punto de venta, facturación, control de inventario",
+        "caracteristicas_clave": [
+          "pantalla táctil"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.6666666666666666,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.6666666666666666,
+          "caracteristicas_clave": 0.3333333333333333,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.8095238095238094,
+        "accuracy_percentage": 80.95238095238095,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 2,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen bien el hilo de la conversación, adaptándose a las respuestas del usuario y profundizando en los detalles necesarios para la recomendación. Se evita la repetición y se enfoca en obtener información útil.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 4: ¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: ¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?"
+          ],
+          "sugerencias": "La Pregunta 2, aunque relevante, introduce el concepto de 'presupuesto' de forma un poco prematura. Sería más natural preguntar primero por el uso específico antes de abordar el presupuesto. La Pregunta 4 maneja mejor la transición al presupuesto, ya que se basa en la información previa. Se podría mejorar la Pregunta 2 reformulándola para que sea más abierta sobre las necesidades del punto de venta antes de preguntar por el presupuesto. Por ejemplo: '¡Entendido! Para un equipo AIO en tu tienda, ¿cuáles son las funciones principales que necesitas que cumpla? (ej. punto de venta, facturación, inventario, etc.)' Esto permitiría al usuario detallar sus necesidades antes de que el sistema sugiera que el presupuesto es 'clave'."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen bien el hilo de la conversación, adaptándose a las respuestas del usuario y profundizando en los detalles necesarios para la recomendación. Se evita la repetición y se enfoca en obtener información útil.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 4: ¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: ¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?\"\n    ],\n    \"sugerencias\": \"La Pregunta 2, aunque relevante, introduce el concepto de 'presupuesto' de forma un poco prematura. Sería más natural preguntar primero por el uso específico antes de abordar el presupuesto. La Pregunta 4 maneja mejor la transición al presupuesto, ya que se basa en la información previa. Se podría mejorar la Pregunta 2 reformulándola para que sea más abierta sobre las necesidades del punto de venta antes de preguntar por el presupuesto. Por ejemplo: '¡Entendido! Para un equipo AIO en tu tienda, ¿cuáles son las funciones principales que necesitas que cumpla? (ej. punto de venta, facturación, inventario, etc.)' Esto permitiría al usuario detallar sus necesidades antes de que el sistema sugiera que el presupuesto es 'clave'.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    }
+  ]
+}

@@ -1,0 +1,2162 @@
+{
+  "component": "QuestionerAgent",
+  "timestamp": "2025-11-24T17:54:46.483404",
+  "total_tests": 20,
+  "successful_tests": 16,
+  "failed_tests": 4,
+  "success_rate": 0.8,
+  "metrics": {
+    "avg_extraction_accuracy": 77.28232164077752,
+    "avg_questions_asked": 4.95,
+    "avg_information_score": 77.75
+  },
+  "thresholds": {
+    "extraction_accuracy": 0.75,
+    "max_questions": 5,
+    "information_score_min": 50.0
+  },
+  "all_thresholds_passed": {
+    "extraction_accuracy": true,
+    "max_questions": true
+  },
+  "detailed_results": [
+    {
+      "scenario_id": "pos_scenario_1",
+      "scenario_name": "Usuario básico - AIO para pequeño comercio",
+      "timestamp": "2025-11-24T16:53:22.820742",
+      "execution_time": 51.56036,
+      "questions_asked": 4,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?",
+        "Dado que el equipo es para punto de venta básico, facturación y control de inventario, ¿hay alguna marca en particular que prefieras o alguna que quieras evitar?",
+        "¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?"
+      ],
+      "user_responses": [
+        "Necesito un equipo AIO para mi tienda",
+        "Es para punto de venta básico, facturación y control de inventario",
+        "Que tenga pantalla táctil",
+        "Algo económico pero confiable, no tengo límite de presupuesto",
+        "No tengo preferencia de marca"
+      ],
+      "extracted_info": {
+        "categoria_producto": "equipo AIO",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "punto de venta básico, facturación y control de inventario",
+        "caracteristicas_clave": [
+          "pantalla táctil",
+          "económico",
+          "confiable"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "aio",
+          "equipo aio",
+          "equipo all-in-one"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "punto de venta, facturación, control de inventario",
+        "caracteristicas_clave": [
+          "pantalla táctil"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.6666666666666666,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.6666666666666666,
+          "caracteristicas_clave": 0.3333333333333333,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.8095238095238094,
+        "accuracy_percentage": 80.95238095238095,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 2,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen bien el hilo de la conversación, adaptándose a las respuestas del usuario y profundizando en los detalles necesarios para la recomendación. Se evita la repetición y se enfoca en obtener información útil.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 4: ¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: ¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?"
+          ],
+          "sugerencias": "La Pregunta 2, aunque relevante, introduce el concepto de 'presupuesto' de forma un poco prematura. Sería más natural preguntar primero por el uso específico antes de abordar el presupuesto. La Pregunta 4 maneja mejor la transición al presupuesto, ya que se basa en la información previa. Se podría mejorar la Pregunta 2 reformulándola para que sea más abierta sobre las necesidades del punto de venta antes de preguntar por el presupuesto. Por ejemplo: '¡Entendido! Para un equipo AIO en tu tienda, ¿cuáles son las funciones principales que necesitas que cumpla? (ej. punto de venta, facturación, inventario, etc.)' Esto permitiría al usuario detallar sus necesidades antes de que el sistema sugiera que el presupuesto es 'clave'."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen bien el hilo de la conversación, adaptándose a las respuestas del usuario y profundizando en los detalles necesarios para la recomendación. Se evita la repetición y se enfoca en obtener información útil.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 4: ¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación y control de inventario. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿podrías indicarme cuál es tu presupuesto aproximado para este equipo?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: ¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿Tienes una idea aproximada de cuánto te gustaría invertir en este equipo AIO?\"\n    ],\n    \"sugerencias\": \"La Pregunta 2, aunque relevante, introduce el concepto de 'presupuesto' de forma un poco prematura. Sería más natural preguntar primero por el uso específico antes de abordar el presupuesto. La Pregunta 4 maneja mejor la transición al presupuesto, ya que se basa en la información previa. Se podría mejorar la Pregunta 2 reformulándola para que sea más abierta sobre las necesidades del punto de venta antes de preguntar por el presupuesto. Por ejemplo: '¡Entendido! Para un equipo AIO en tu tienda, ¿cuáles son las funciones principales que necesitas que cumpla? (ej. punto de venta, facturación, inventario, etc.)' Esto permitiría al usuario detallar sus necesidades antes de que el sistema sugiera que el presupuesto es 'clave'.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_2",
+      "scenario_name": "Usuario exigente - AIO con especificaciones técnicas",
+      "timestamp": "2025-11-24T16:56:30.723353",
+      "execution_time": 61.695485,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este equipo AIO? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.",
+        "Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+        "Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+        "Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?"
+      ],
+      "user_responses": [
+        "Busco un equipo AIO para restaurante",
+        "Necesito mínimo 8GB RAM, procesador J6412 y pantalla de 15 pulgadas",
+        "Que tenga pantalla táctil capacitiva multitoque",
+        "Necesito puertos USB 3.0 y conexión inalámbrica",
+        "Prefiero marcas como 3NSTAR o SAT PCS"
+      ],
+      "extracted_info": {
+        "categoria_producto": "AIO",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "8GB RAM",
+          "procesador J6412",
+          "pantalla de 15 pulgadas",
+          "pantalla táctil capacitiva multitoque",
+          "puertos USB 3.0",
+          "conexión inalámbrica"
+        ],
+        "preferencias_marca": [
+          "3NSTAR",
+          "SAT PCS"
+        ],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 60.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "aio",
+          "equipo aio",
+          "equipo all-in-one"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "8GB RAM",
+          "procesador J6412",
+          "pantalla 15 pulgadas",
+          "táctil capacitiva multitoque",
+          "USB 3.0",
+          "inalámbrico"
+        ],
+        "preferencias_marca": [
+          "3NSTAR",
+          "SAT PCS"
+        ]
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.6666666666666666,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 0.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.2,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.6952380952380953,
+        "accuracy_percentage": 69.52380952380953,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 1,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 4,
+          "relevancia": 5,
+          "naturalidad": 3,
+          "eficiencia": 3,
+          "completitud": 4,
+          "score_total": 3.8,
+          "comentarios": "Las preguntas 2, 3, 4 y 5 son muy repetitivas en su estructura y no avanzan la conversación de manera efectiva. Se centran en preguntar por el presupuesto varias veces sin haber obtenido información nueva relevante en las preguntas intermedias. La información sobre las características técnicas y las marcas deseadas se ha ido obteniendo de forma fragmentada y sin un hilo conductor claro.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este equipo AIO? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.",
+            "Pregunta 3: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+            "Pregunta 4: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+            "Pregunta 5: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?"
+          ],
+          "sugerencias": "Se debe evitar la repetición de la misma pregunta (sobre el presupuesto) sin haber obtenido nueva información. Las preguntas deben ser más dinámicas y agrupar la información de manera más lógica. Por ejemplo, después de obtener las especificaciones técnicas (RAM, procesador, pantalla), se podría preguntar por el presupuesto y las marcas deseadas en una sola pregunta o en preguntas consecutivas pero con una estructura diferente. Se debería haber preguntado por las características técnicas y las marcas antes de insistir en el presupuesto. Una mejor secuencia podría ser: 1. Tipo de producto y uso. 2. Especificaciones técnicas clave. 3. Preferencias de marca. 4. Presupuesto. 5. Otras características (conectividad, tipo de pantalla táctil)."
+        },
+        "raw_response": "{\n    \"contextualidad\": 4,\n    \"relevancia\": 5,\n    \"naturalidad\": 3,\n    \"eficiencia\": 3,\n    \"completitud\": 4,\n    \"score_total\": 3.8,\n    \"comentarios\": \"Las preguntas 2, 3, 4 y 5 son muy repetitivas en su estructura y no avanzan la conversación de manera efectiva. Se centran en preguntar por el presupuesto varias veces sin haber obtenido información nueva relevante en las preguntas intermedias. La información sobre las características técnicas y las marcas deseadas se ha ido obteniendo de forma fragmentada y sin un hilo conductor claro.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este equipo AIO? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.\",\n        \"Pregunta 3: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?\",\n        \"Pregunta 4: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?\",\n        \"Pregunta 5: Entendido, buscas un equipo AIO con esas especificaciones para tu restaurante. Para poder acotar las opciones y asegurarme de que se ajusta a tus necesidades, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?\"\n    ],\n    \"sugerencias\": \"Se debe evitar la repetición de la misma pregunta (sobre el presupuesto) sin haber obtenido nueva información. Las preguntas deben ser más dinámicas y agrupar la información de manera más lógica. Por ejemplo, después de obtener las especificaciones técnicas (RAM, procesador, pantalla), se podría preguntar por el presupuesto y las marcas deseadas en una sola pregunta o en preguntas consecutivas pero con una estructura diferente. Se debería haber preguntado por las características técnicas y las marcas antes de insistir en el presupuesto. Una mejor secuencia podría ser: 1. Tipo de producto y uso. 2. Especificaciones técnicas clave. 3. Preferencias de marca. 4. Presupuesto. 5. Otras características (conectividad, tipo de pantalla táctil).\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 60.0,
+      "thresholds_passed": {
+        "extraction_accuracy": false,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": false
+    },
+    {
+      "scenario_id": "pos_scenario_3",
+      "scenario_name": "Usuario profesional - AIO para supermercado",
+      "timestamp": "2025-11-24T16:59:38.646704",
+      "execution_time": 61.721468,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte los equipos AIO más adecuados para las cajas de tu supermercado, ¿podrías indicarme cuál es tu presupuesto aproximado por unidad?",
+        "Entendido, buscas equipos AIO para cajas de supermercado con 4GB de RAM, 128GB SSD y pantalla táctil. Para poder acotar las opciones y asegurarme de que se ajustan a tus necesidades, ¿tienes alguna marca de preferencia o alguna que quieras evitar?",
+        "Considerando que necesitas un VFD, MSR y pantalla trasera para cliente, ¿cuál es tu presupuesto aproximado por unidad para estos equipos AIO?",
+        "Perfecto, ya tenemos una idea clara de las características técnicas y funcionales que necesitas en estos equipos AIO para cajas de supermercado. Para poder afinar la búsqueda y presentarte las mejores opciones, ¿podrías indicarme cuál es tu presupuesto aproximado por unidad?"
+      ],
+      "user_responses": [
+        "Necesito equipos AIO para cajas de supermercado",
+        "Mínimo 4GB RAM, SSD de 128GB, pantalla táctil resistiva o capacitiva",
+        "Necesito que tenga VFD, MSR y pantalla trasera para cliente",
+        "Que soporte VESA para montaje",
+        "Certificaciones FCC y CE son obligatoriasm, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "AIO",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "cajas de supermercado",
+        "caracteristicas_clave": [
+          "4GB RAM",
+          "SSD 128GB",
+          "pantalla táctil resistiva o capacitiva",
+          "VFD",
+          "MSR",
+          "pantalla trasera para cliente",
+          "soporte VESA para montaje"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [
+          "Certificaciones FCC y CE son obligatorias"
+        ],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 85.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "aio",
+          "equipo aio",
+          "equipo all-in-one"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "supermercado, cajas",
+        "caracteristicas_clave": [
+          "4GB RAM",
+          "SSD 128GB",
+          "pantalla táctil",
+          "VFD",
+          "MSR",
+          "pantalla trasera",
+          "VESA",
+          "certificaciones FCC CE"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.6666666666666666,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.5,
+          "caracteristicas_clave": 0.36363636363636365,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7900432900432899,
+        "accuracy_percentage": 79.004329004329,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 2,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 9,
+          "score_total": 8.2,
+          "comentarios": "Las preguntas son contextuales y relevantes, construyendo sobre la información previa. Se enfocan en obtener detalles específicos para la recomendación. La naturalidad es buena, aunque algunas preguntas podrían ser un poco más fluidas. La eficiencia es alta al obtener información clave en cada interacción. La completitud es muy buena, ya que se están cubriendo aspectos técnicos y funcionales importantes.",
+          "mejores_preguntas": [
+            "Pregunta 3: Entendido, buscas equipos AIO para cajas de supermercado con 4GB de RAM, 128GB SSD y pantalla táctil. Para poder acotar las opciones y asegurarme de que se ajustan a tus necesidades, ¿tienes alguna marca de preferencia o alguna que quieras evitar?",
+            "Pregunta 5: Perfecto, ya tenemos una idea clara de las características técnicas y funcionales que necesitas en estos equipos AIO para cajas de supermercado. Para poder afinar la búsqueda y presentarte las mejores opciones, ¿podrías indicarme cuál es tu presupuesto aproximado por unidad?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 4: Considerando que necesitas un VFD, MSR y pantalla trasera para cliente, ¿cuál es tu presupuesto aproximado por unidad para estos equipos AIO?"
+          ],
+          "sugerencias": "La Pregunta 4 repite la consulta sobre el presupuesto, que ya se había hecho en la Pregunta 2 y se vuelve a preguntar en la Pregunta 5. Sería más eficiente consolidar las preguntas sobre el presupuesto o preguntar por él una vez que se tengan todas las características técnicas. Se podría haber preguntado por las certificaciones FCC y CE junto con las otras características técnicas en una sola pregunta, o haber esperado a la última pregunta para confirmar si había alguna otra especificación importante antes de cerrar la recopilación de requisitos. La repetición de la pregunta sobre el presupuesto en la Pregunta 4 es el principal punto a mejorar en términos de eficiencia."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 7,\n    \"eficiencia\": 8,\n    \"completitud\": 9,\n    \"score_total\": 8.2,\n    \"comentarios\": \"Las preguntas son contextuales y relevantes, construyendo sobre la información previa. Se enfocan en obtener detalles específicos para la recomendación. La naturalidad es buena, aunque algunas preguntas podrían ser un poco más fluidas. La eficiencia es alta al obtener información clave en cada interacción. La completitud es muy buena, ya que se están cubriendo aspectos técnicos y funcionales importantes.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3: Entendido, buscas equipos AIO para cajas de supermercado con 4GB de RAM, 128GB SSD y pantalla táctil. Para poder acotar las opciones y asegurarme de que se ajustan a tus necesidades, ¿tienes alguna marca de preferencia o alguna que quieras evitar?\",\n        \"Pregunta 5: Perfecto, ya tenemos una idea clara de las características técnicas y funcionales que necesitas en estos equipos AIO para cajas de supermercado. Para poder afinar la búsqueda y presentarte las mejores opciones, ¿podrías indicarme cuál es tu presupuesto aproximado por unidad?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 4: Considerando que necesitas un VFD, MSR y pantalla trasera para cliente, ¿cuál es tu presupuesto aproximado por unidad para estos equipos AIO?\"\n    ],\n    \"sugerencias\": \"La Pregunta 4 repite la consulta sobre el presupuesto, que ya se había hecho en la Pregunta 2 y se vuelve a preguntar en la Pregunta 5. Sería más eficiente consolidar las preguntas sobre el presupuesto o preguntar por él una vez que se tengan todas las características técnicas. Se podría haber preguntado por las certificaciones FCC y CE junto con las otras características técnicas en una sola pregunta, o haber esperado a la última pregunta para confirmar si había alguna otra especificación importante antes de cerrar la recopilación de requisitos. La repetición de la pregunta sobre el presupuesto en la Pregunta 4 es el principal punto a mejorar en términos de eficiencia.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 85.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_4",
+      "scenario_name": "Usuario básico - Cajón de dinero estándar",
+      "timestamp": "2025-11-24T17:02:46.312113",
+      "execution_time": 61.777616,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder ayudarte mejor a encontrar el cajón de dinero ideal, ¿podrías decirme cuál es tu presupuesto aproximado?",
+        "Entendido, para tu tienda pequeña, ¿qué tipo de transacciones sueles manejar? ¿Más efectivo o pagos con tarjeta?",
+        "Dado que es para una tienda pequeña y buscas que sea fácil de usar, ¿tienes alguna preferencia en cuanto al tamaño del cajón de dinero o cuántos compartimentos para billetes y monedas necesitarías?",
+        "Entendido, buscas algo básico y económico para tu tienda pequeña. ¿Tienes alguna marca en mente o alguna preferencia en cuanto a si prefieres que sea manual o se conecte a una caja registradora o terminal de punto de venta?"
+      ],
+      "user_responses": [
+        "Necesito un cajón de dinero",
+        "Para mi tienda pequeña",
+        "Que sea fácil de usar",
+        "Algo básico y económico",
+        "Tengo presupuesto de hasta $100 USD",
+        "Espero tu recomendación, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "cajón de dinero",
+        "presupuesto_min": null,
+        "presupuesto_max": 100.0,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "tienda pequeña",
+        "caracteristicas_clave": [
+          "fácil de usar",
+          "básico",
+          "económico"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "cajones",
+          "cajón de dinero",
+          "cajon portamonedas",
+          "cash drawer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": 100,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "tienda pequeña",
+        "caracteristicas_clave": [
+          "fácil de usar",
+          "básico",
+          "económico"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 1.0,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.8928571428571429,
+        "accuracy_percentage": 89.28571428571429,
+        "fields_evaluated": 7,
+        "perfect_matches": 6,
+        "partial_matches": 0,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre las respuestas anteriores del usuario. Se enfocan en obtener información útil para la recomendación.",
+          "mejores_preguntas": [
+            "Pregunta 3: Dado que es para una tienda pequeña y buscas que sea fácil de usar, ¿tienes alguna preferencia en cuanto al tamaño del cajón de dinero o cuántos compartimentos para billetes y monedas necesitarías?",
+            "Pregunta 5: Entendido, buscas algo básico y económico para tu tienda pequeña. ¿Tienes alguna marca en mente o alguna preferencia en cuanto a si prefieres que sea manual o se conecte a una caja registradora o terminal de punto de venta?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: Para poder ayudarte mejor a encontrar el cajón de dinero ideal, ¿podrías decirme cuál es tu presupuesto aproximado?"
+          ],
+          "sugerencias": "La pregunta 2 podría ser más específica. En lugar de preguntar por el presupuesto aproximado, se podría haber preguntado directamente si tenía un presupuesto en mente o si buscaba opciones económicas, ya que la respuesta 'Para mi tienda pequeña' podría implicar una limitación de presupuesto. Sin embargo, la pregunta 4 ya aborda la necesidad de algo 'básico y económico', lo cual mitiga este punto. La pregunta 5 es buena al preguntar sobre la conectividad, pero podría haber sido formulada un poco antes para evitar la redundancia de preguntar por características básicas si el usuario buscaba algo más avanzado. En general, el flujo es bueno y la información extraída es valiosa."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre las respuestas anteriores del usuario. Se enfocan en obtener información útil para la recomendación.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3: Dado que es para una tienda pequeña y buscas que sea fácil de usar, ¿tienes alguna preferencia en cuanto al tamaño del cajón de dinero o cuántos compartimentos para billetes y monedas necesitarías?\",\n        \"Pregunta 5: Entendido, buscas algo básico y económico para tu tienda pequeña. ¿Tienes alguna marca en mente o alguna preferencia en cuanto a si prefieres que sea manual o se conecte a una caja registradora o terminal de punto de venta?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: Para poder ayudarte mejor a encontrar el cajón de dinero ideal, ¿podrías decirme cuál es tu presupuesto aproximado?\"\n    ],\n    \"sugerencias\": \"La pregunta 2 podría ser más específica. En lugar de preguntar por el presupuesto aproximado, se podría haber preguntado directamente si tenía un presupuesto en mente o si buscaba opciones económicas, ya que la respuesta 'Para mi tienda pequeña' podría implicar una limitación de presupuesto. Sin embargo, la pregunta 4 ya aborda la necesidad de algo 'básico y económico', lo cual mitiga este punto. La pregunta 5 es buena al preguntar sobre la conectividad, pero podría haber sido formulada un poco antes para evitar la redundancia de preguntar por características básicas si el usuario buscaba algo más avanzado. En general, el flujo es bueno y la información extraída es valiosa.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_5",
+      "scenario_name": "Usuario específico - Cajón con ranura para cheques",
+      "timestamp": "2025-11-24T17:05:54.281707",
+      "execution_time": 61.726192,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este cajón de dinero?",
+        "Entendido, un cajón de dinero con ranura para cheques para tu restaurante. Para poder acotar las opciones, ¿tienes un presupuesto aproximado en mente?",
+        "Considerando que necesitas al menos 5 compartimentos para billetes y 8 para monedas, además de la ranura para cheques, ¿tienes alguna preferencia en cuanto a la marca o el material del cajón de dinero?",
+        "¡Perfecto! Ya tenemos bastantes detalles importantes: un cajón de dinero para restaurante, con ranura para cheques, al menos 5 compartimentos para billetes y 8 para monedas, de metal y con apertura de seguridad.\n\nPara poder afinar aún más la búsqueda y asegurarnos de que sea la opción ideal, ¿tienes un presupuesto aproximado en mente para este cajón de dinero?"
+      ],
+      "user_responses": [
+        "Busco un cajón de dinero para restaurante",
+        "Necesito que tenga ranura para cheques",
+        "Mínimo 5 compartimientos para billetes y 8 para monedas",
+        "Que sea de metal y tenga apertura de seguridad",
+        "Conexión por RJ11, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "cajón de dinero",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "ranura para cheques",
+          "mínimo 5 compartimientos para billetes",
+          "8 compartimientos para monedas",
+          "de metal",
+          "apertura de seguridad",
+          "conexión por RJ11"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "cajones",
+          "cajón de dinero",
+          "cajon portamonedas",
+          "cash drawer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "ranura para cheques",
+          "5 compartimientos billetes",
+          "8 compartimientos monedas",
+          "metal",
+          "apertura de seguridad",
+          "RJ11"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.2,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7785714285714286,
+        "accuracy_percentage": 77.85714285714286,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 9,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 8,
+          "score_total": 8.4,
+          "comentarios": "Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles específicos y relevantes para la recomendación del producto. El lenguaje es conversacional y fácil de entender.",
+          "mejores_preguntas": [
+            "Pregunta 4: Considerando que necesitas al menos 5 compartimientos para billetes y 8 para monedas, además de la ranura para cheques, ¿tienes alguna preferencia en cuanto a la marca o el material del cajón de dinero?",
+            "Pregunta 5: ¡Perfecto! Ya tenemos bastantes detalles importantes: un cajón de dinero para restaurante, con ranura para cheques, al menos 5 compartimentos para billetes y 8 para monedas, de metal y con apertura de seguridad. Para poder afinar aún más la búsqueda y asegurarnos de que sea la opción ideal, ¿tienes un presupuesto aproximado en mente para este cajón de dinero?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este cajón de dinero?"
+          ],
+          "sugerencias": "La pregunta 2 podría ser más eficiente si se hubiera integrado con la pregunta 3, ya que el usuario no respondió directamente sobre el presupuesto en la respuesta 2, sino que proporcionó otra característica. Se podría haber preguntado por el presupuesto después de recopilar algunas características clave, como se hizo en la pregunta 5. Sin embargo, la progresión general es muy buena y las preguntas posteriores compensan esta pequeña ineficiencia."
+        },
+        "raw_response": "{\n    \"contextualidad\": 9,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 8,\n    \"score_total\": 8.4,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles específicos y relevantes para la recomendación del producto. El lenguaje es conversacional y fácil de entender.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 4: Considerando que necesitas al menos 5 compartimientos para billetes y 8 para monedas, además de la ranura para cheques, ¿tienes alguna preferencia en cuanto a la marca o el material del cajón de dinero?\",\n        \"Pregunta 5: ¡Perfecto! Ya tenemos bastantes detalles importantes: un cajón de dinero para restaurante, con ranura para cheques, al menos 5 compartimentos para billetes y 8 para monedas, de metal y con apertura de seguridad. Para poder afinar aún más la búsqueda y asegurarnos de que sea la opción ideal, ¿tienes un presupuesto aproximado en mente para este cajón de dinero?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para este cajón de dinero?\"\n    ],\n    \"sugerencias\": \"La pregunta 2 podría ser más eficiente si se hubiera integrado con la pregunta 3, ya que el usuario no respondió directamente sobre el presupuesto en la respuesta 2, sino que proporcionó otra característica. Se podría haber preguntado por el presupuesto después de recopilar algunas características clave, como se hizo en la pregunta 5. Sin embargo, la progresión general es muy buena y las preguntas posteriores compensan esta pequeña ineficiencia.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_6",
+      "scenario_name": "Usuario exigente - Cajón de alta resistencia",
+      "timestamp": "2025-11-24T17:09:01.651056",
+      "execution_time": 61.798152,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte el cajón de dinero de alta resistencia más adecuado, ¿podrías darme una idea aproximada de tu presupuesto?",
+        "Entendido, para un supermercado, la durabilidad es clave. ¿Tienes alguna preferencia en cuanto al tamaño del cajón, o alguna característica específica que necesites, como bandejas extraíbles o un sistema de cierre particular?",
+        "Considerando que necesitas un cajón de dinero para uso intensivo en un supermercado y que debe soportar al menos 2 millones de ciclos, ¿hay alguna marca en particular que prefieras o alguna característica adicional que sea importante para ti, como la seguridad, el tipo de apertura o la integración con un sistema TPV?",
+        "Considerando que necesitas un cajón de dinero para uso intensivo en un supermercado, con rieles metálicos de balineras y que soporte al menos 2 millones de ciclos, ¿hay alguna marca en particular que prefieras o alguna característica adicional que sea importante para ti, como la seguridad, el tipo de apertura o la integración con un sistema TPV?"
+      ],
+      "user_responses": [
+        "Necesito un cajón de dinero de alta resistencia",
+        "Para uso intensivo en supermercado",
+        "Mínimo 2 millones de ciclos",
+        "Riel metálico de balineras",
+        "Que tenga compartimiento de billetes removible como caja de seguridad, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "cajón de dinero",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "almacenamiento de dinero",
+        "caracteristicas_clave": [
+          "alta resistencia",
+          "riel metálico",
+          "balineras",
+          "compartimiento de billetes removible",
+          "caja de seguridad"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": "Para uso intensivo en supermercado | Para uso intensivo en supermercado...",
+        "information_score": 85.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "cajones",
+          "cajón de dinero",
+          "cajon portamonedas",
+          "cash drawer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "supermercado, uso intensivo",
+        "caracteristicas_clave": [
+          "2 millones de ciclos",
+          "riel metálico balineras",
+          "compartimiento billetes removible",
+          "caja de seguridad",
+          "alta resistencia"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.0,
+          "caracteristicas_clave": 0.25,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.6428571428571429,
+        "accuracy_percentage": 64.28571428571429,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 0,
+        "mismatches": 3
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 9,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 8,
+          "score_total": 8.4,
+          "comentarios": "Las preguntas siguen de manera lógica el hilo de la conversación, profundizando en las características del producto y las necesidades del usuario. Se evita la repetición y se construye sobre la información previa. La pregunta 5 es particularmente buena al consolidar la información y preguntar por preferencias adicionales.",
+          "mejores_preguntas": [
+            "Pregunta 3",
+            "Pregunta 4",
+            "Pregunta 5"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2"
+          ],
+          "sugerencias": "La Pregunta 2, aunque relevante, podría haber sido formulada de manera más abierta para obtener más información sobre el uso específico en el supermercado, en lugar de preguntar directamente por el presupuesto. Por ejemplo: 'Entendido, un cajón de dinero de alta resistencia para un supermercado. ¿Podrías contarme un poco más sobre el entorno de uso? ¿Es para una caja principal, para varios puntos de venta, o tienes alguna otra consideración específica sobre cómo se utilizará?' Esto podría haber revelado la necesidad de 'alta resistencia' de forma más orgánica. En general, las preguntas son muy buenas y cumplen su función."
+        },
+        "raw_response": "{\n    \"contextualidad\": 9,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 8,\n    \"score_total\": 8.4,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el hilo de la conversación, profundizando en las características del producto y las necesidades del usuario. Se evita la repetición y se construye sobre la información previa. La pregunta 5 es particularmente buena al consolidar la información y preguntar por preferencias adicionales.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3\",\n        \"Pregunta 4\",\n        \"Pregunta 5\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2\"\n    ],\n    \"sugerencias\": \"La Pregunta 2, aunque relevante, podría haber sido formulada de manera más abierta para obtener más información sobre el uso específico en el supermercado, en lugar de preguntar directamente por el presupuesto. Por ejemplo: 'Entendido, un cajón de dinero de alta resistencia para un supermercado. ¿Podrías contarme un poco más sobre el entorno de uso? ¿Es para una caja principal, para varios puntos de venta, o tienes alguna otra consideración específica sobre cómo se utilizará?' Esto podría haber revelado la necesidad de 'alta resistencia' de forma más orgánica. En general, las preguntas son muy buenas y cumplen su función.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 85.0,
+      "thresholds_passed": {
+        "extraction_accuracy": false,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": false
+    },
+    {
+      "scenario_id": "pos_scenario_7",
+      "scenario_name": "Usuario básico - Impresora de tickets",
+      "timestamp": "2025-11-24T17:12:08.847209",
+      "execution_time": 61.454125,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte la mejor impresora de tickets, ¿podrías contarme un poco más sobre para qué la vas a usar principalmente? Por ejemplo, ¿es para un negocio, para eventos, o para algún otro propósito específico?",
+        "¡Entendido! Para tu tienda de ropa, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para la impresora de tickets? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.",
+        "¡Perfecto! Ya sé que necesitas una impresora de tickets para tu tienda de ropa y que debe imprimir códigos de barras. Para poder acotar las opciones, ¿tienes un presupuesto aproximado en mente?",
+        "Dado que buscas algo básico y económico para tu tienda de ropa, ¿tienes alguna preferencia de marca o alguna característica específica que sea indispensable además de la impresión de códigos de barras?"
+      ],
+      "user_responses": [
+        "Necesito una impresora de tickets",
+        "Para mi tienda de ropa",
+        "Que imprima códigos de barras",
+        "Algo básico y económico",
+        "Con conexión USB",
+        "Presupuesto máximo de $150 USD"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora de tickets",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "tienda de ropa",
+        "caracteristicas_clave": [
+          "impresión de códigos de barras",
+          "básico",
+          "económico",
+          "conexión USB"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 55.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "impresoras",
+          "impresora de tickets",
+          "impresora térmica",
+          "ticket printer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": 150,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "tienda, impresión de tickets",
+        "caracteristicas_clave": [
+          "códigos de barras",
+          "USB",
+          "básico",
+          "económico"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 0.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.25,
+          "caracteristicas_clave": 0.3333333333333333,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.5476190476190477,
+        "accuracy_percentage": 54.761904761904766,
+        "fields_evaluated": 7,
+        "perfect_matches": 3,
+        "partial_matches": 0,
+        "mismatches": 4
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre las respuestas anteriores. Se enfocan en obtener información clave para la recomendación del producto. El lenguaje es natural y fácil de entender.",
+          "mejores_preguntas": [
+            "Pregunta 2: Para poder recomendarte la mejor impresora de tickets, ¿podrías contarme un poco más sobre para qué la vas a usar principalmente? Por ejemplo, ¿es para un negocio, para eventos, o para algún otro propósito específico?",
+            "Pregunta 4: ¡Perfecto! Ya sé que necesitas una impresora de tickets para tu tienda de ropa y que debe imprimir códigos de barras. Para poder acotar las opciones, ¿tienes un presupuesto aproximado en mente?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 3: ¡Entendido! Para tu tienda de ropa, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para la impresora de tickets? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas."
+          ],
+          "sugerencias": "La Pregunta 3 es un poco redundante con la Pregunta 4, ya que ambas preguntan por el presupuesto. Se podría haber integrado la pregunta sobre el presupuesto de forma más fluida o haberla formulado de manera diferente para evitar la repetición. Por ejemplo, en la Pregunta 3, se podría haber preguntado directamente por el rango de precio o si había alguna limitación presupuestaria, y luego en la Pregunta 4, se podría haber confirmado esa información o haberla usado para refinar la búsqueda. Sin embargo, el flujo general es bueno y la información se extrae de manera efectiva."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre las respuestas anteriores. Se enfocan en obtener información clave para la recomendación del producto. El lenguaje es natural y fácil de entender.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 2: Para poder recomendarte la mejor impresora de tickets, ¿podrías contarme un poco más sobre para qué la vas a usar principalmente? Por ejemplo, ¿es para un negocio, para eventos, o para algún otro propósito específico?\",\n        \"Pregunta 4: ¡Perfecto! Ya sé que necesitas una impresora de tickets para tu tienda de ropa y que debe imprimir códigos de barras. Para poder acotar las opciones, ¿tienes un presupuesto aproximado en mente?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 3: ¡Entendido! Para tu tienda de ropa, ¿tienes alguna idea del presupuesto aproximado que tienes en mente para la impresora de tickets? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.\"\n    ],\n    \"sugerencias\": \"La Pregunta 3 es un poco redundante con la Pregunta 4, ya que ambas preguntan por el presupuesto. Se podría haber integrado la pregunta sobre el presupuesto de forma más fluida o haberla formulado de manera diferente para evitar la repetición. Por ejemplo, en la Pregunta 3, se podría haber preguntado directamente por el rango de precio o si había alguna limitación presupuestaria, y luego en la Pregunta 4, se podría haber confirmado esa información o haberla usado para refinar la búsqueda. Sin embargo, el flujo general es bueno y la información se extrae de manera efectiva.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 55.0,
+      "thresholds_passed": {
+        "extraction_accuracy": false,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": false
+    },
+    {
+      "scenario_id": "pos_scenario_8",
+      "scenario_name": "Usuario específico - Impresora térmica con QR",
+      "timestamp": "2025-11-24T17:15:17.287142",
+      "execution_time": 61.598602,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para un restaurante, ¿tienes alguna idea del presupuesto que manejas para la impresora térmica? Esto me ayudará a enfocarme en las opciones más adecuadas.",
+        "Entendido, una impresora térmica para un restaurante que imprima códigos QR y PDF417. Para poder recomendarte las mejores opciones, ¿podrías darme una idea aproximada de tu presupuesto? Así me aseguro de que las sugerencias se ajusten a lo que buscas.",
+        "Considerando que necesitas una velocidad mínima de 200 mm/s y la capacidad de imprimir códigos QR y PDF417 para tu restaurante, ¿tienes alguna marca de impresoras térmicas en mente o alguna preferencia en cuanto a tamaño o conectividad (USB, Ethernet, Wi-Fi)?",
+        "Para asegurarnos de que la impresora térmica sea perfecta para tu restaurante, ¿podrías indicarme cuál es tu presupuesto aproximado?"
+      ],
+      "user_responses": [
+        "Busco una impresora térmica para restaurante",
+        "Necesito que imprima códigos QR y PDF417",
+        "Velocidad mínima de 200 mm/s",
+        "Resolución de 203 DPI",
+        "Que tenga conexión USB y Ethernet, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora térmica",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "impresión de códigos QR",
+          "impresión de PDF417",
+          "velocidad mínima de 200 mm/s",
+          "Resolución de 203 DPI",
+          "conexión USB",
+          "conexión Ethernet"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "impresoras",
+          "impresora térmica",
+          "impresora de tickets",
+          "thermal printer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante",
+        "caracteristicas_clave": [
+          "códigos QR",
+          "PDF417",
+          "200 mm/s",
+          "203 DPI",
+          "USB",
+          "Ethernet"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.0,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.75,
+        "accuracy_percentage": 75.0,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 9,
+          "score_total": 8.2,
+          "comentarios": "Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles técnicos específicos que son cruciales para la recomendación del producto. La pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones.",
+          "mejores_preguntas": [
+            "Pregunta 3: Entendido, una impresora térmica para un restaurante que imprima códigos QR y PDF417. Para poder recomendarte las mejores opciones, ¿podrías darme una idea aproximada de tu presupuesto? Así me aseguro de que las sugerencias se ajusten a lo que buscas.",
+            "Pregunta 4: Considerando que necesitas una velocidad mínima de 200 mm/s y la capacidad de imprimir códigos QR y PDF417 para tu restaurante, ¿tienes alguna marca de impresoras térmicas en mente o alguna preferencia en cuanto a tamaño o conectividad (USB, Ethernet, Wi-Fi)?",
+            "Pregunta 5: Para asegurarnos de que la impresora térmica sea perfecta para tu restaurante, ¿podrías indicarme cuál es tu presupuesto aproximado? "
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto que manejas para la impresora térmica? Esto me ayudará a enfocarme en las opciones más adecuadas."
+          ],
+          "sugerencias": "La pregunta 2 podría ser más eficiente si se hubiera formulado después de obtener la información sobre los códigos QR y PDF417, ya que el presupuesto suele ser una consideración más general. Sin embargo, la pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones. Se podría haber integrado la pregunta sobre conectividad (USB, Ethernet, Wi-Fi) en la pregunta 3 o 4 para optimizar el flujo. La pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones. La información extraída indica que el usuario no tiene presupuesto limitado, lo cual es una información valiosa que se obtuvo al final. Podría ser útil preguntar sobre el presupuesto antes de indagar en características muy específicas, o al menos tener una pregunta de seguimiento para confirmar la ausencia de límites presupuestarios si el usuario no lo especifica inicialmente."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 7,\n    \"eficiencia\": 8,\n    \"completitud\": 9,\n    \"score_total\": 8.2,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles técnicos específicos que son cruciales para la recomendación del producto. La pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3: Entendido, una impresora térmica para un restaurante que imprima códigos QR y PDF417. Para poder recomendarte las mejores opciones, ¿podrías darme una idea aproximada de tu presupuesto? Así me aseguro de que las sugerencias se ajusten a lo que buscas.\",\n        \"Pregunta 4: Considerando que necesitas una velocidad mínima de 200 mm/s y la capacidad de imprimir códigos QR y PDF417 para tu restaurante, ¿tienes alguna marca de impresoras térmicas en mente o alguna preferencia en cuanto a tamaño o conectividad (USB, Ethernet, Wi-Fi)?\",\n        \"Pregunta 5: Para asegurarnos de que la impresora térmica sea perfecta para tu restaurante, ¿podrías indicarme cuál es tu presupuesto aproximado? \"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 2: Para un restaurante, ¿tienes alguna idea del presupuesto que manejas para la impresora térmica? Esto me ayudará a enfocarme en las opciones más adecuadas.\"\n    ],\n    \"sugerencias\": \"La pregunta 2 podría ser más eficiente si se hubiera formulado después de obtener la información sobre los códigos QR y PDF417, ya que el presupuesto suele ser una consideración más general. Sin embargo, la pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones. Se podría haber integrado la pregunta sobre conectividad (USB, Ethernet, Wi-Fi) en la pregunta 3 o 4 para optimizar el flujo. La pregunta 5, al preguntar por el presupuesto después de haber recopilado varias características, es una buena estrategia para confirmar si hay limitaciones. La información extraída indica que el usuario no tiene presupuesto limitado, lo cual es una información valiosa que se obtuvo al final. Podría ser útil preguntar sobre el presupuesto antes de indagar en características muy específicas, o al menos tener una pregunta de seguimiento para confirmar la ausencia de límites presupuestarios si el usuario no lo especifica inicialmente.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_9",
+      "scenario_name": "Usuario profesional - Impresora con marca de agua",
+      "timestamp": "2025-11-24T17:18:25.863081",
+      "execution_time": 61.489434,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte la mejor impresora térmica para tu farmacia, ¿tienes un presupuesto aproximado en mente? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.",
+        "Entendido, una impresora térmica con función de marca de agua para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+        "Entendido, una impresora térmica con función de marca de agua y soporte para códigos 1D y 2D completos para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+        "Entendido, una impresora térmica con función de marca de agua, soporte para códigos 1D y 2D completos, y una velocidad de 250 mm/s o superior para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?"
+      ],
+      "user_responses": [
+        "Necesito una impresora térmica para farmacia",
+        "Debe tener impresión de marca de agua",
+        "Soporte para códigos 1D y 2D completos",
+        "Velocidad de 250 mm/s o superior",
+        "Resolución 203 DPI, ancho de papel 80mm, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora térmica",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "farmacia",
+        "caracteristicas_clave": [
+          "impresión de marca de agua",
+          "soporte para códigos 1D y 2D completos",
+          "velocidad de 250 mm/s o superior",
+          "Resolución 203 DPI",
+          "ancho de papel 80mm"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "impresoras",
+          "impresora térmica",
+          "impresora de tickets",
+          "thermal printer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "farmacia",
+        "caracteristicas_clave": [
+          "marca de agua",
+          "códigos 1D",
+          "códigos 2D",
+          "250 mm/s",
+          "203 DPI",
+          "80mm"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.0,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.75,
+        "accuracy_percentage": 75.0,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 7,
+          "relevancia": 8,
+          "naturalidad": 6,
+          "eficiencia": 7,
+          "completitud": 8,
+          "score_total": 7.2,
+          "comentarios": "Las preguntas intentan recopilar información específica sobre las características deseadas del producto. Se nota un esfuerzo por construir sobre la información previa, aunque la repetición de la pregunta sobre el presupuesto es un punto débil.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para poder recomendarte la mejor impresora térmica para tu farmacia, ¿tienes un presupuesto aproximado en mente? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas."
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 3: Entendido, una impresora térmica con función de marca de agua para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+            "Pregunta 4: Entendido, una impresora térmica con función de marca de agua y soporte para códigos 1D y 2D completos para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+            "Pregunta 5: Entendido, una impresora térmica con función de marca de agua, soporte para códigos 1D y 2D completos, y una velocidad de 250 mm/s o superior para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?"
+          ],
+          "sugerencias": "Se observa una repetición excesiva de la pregunta sobre el presupuesto en las preguntas 3, 4 y 5, a pesar de que el usuario no la había respondido directamente. Sería más eficiente preguntar por las características una vez y luego, si el presupuesto sigue siendo desconocido, preguntar por él. Alternativamente, se podría haber preguntado por el presupuesto en la Pregunta 2 y, al no obtener respuesta, haber pasado a preguntar por las características, integrando la pregunta del presupuesto al final o cuando se detecte que es un factor limitante. La redacción de las preguntas 3, 4 y 5 es muy similar y podría ser más variada para evitar la sensación de interrogatorio."
+        },
+        "raw_response": "{\n    \"contextualidad\": 7,\n    \"relevancia\": 8,\n    \"naturalidad\": 6,\n    \"eficiencia\": 7,\n    \"completitud\": 8,\n    \"score_total\": 7.2,\n    \"comentarios\": \"Las preguntas intentan recopilar información específica sobre las características deseadas del producto. Se nota un esfuerzo por construir sobre la información previa, aunque la repetición de la pregunta sobre el presupuesto es un punto débil.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para poder recomendarte la mejor impresora térmica para tu farmacia, ¿tienes un presupuesto aproximado en mente? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 3: Entendido, una impresora térmica con función de marca de agua para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?\",\n        \"Pregunta 4: Entendido, una impresora térmica con función de marca de agua y soporte para códigos 1D y 2D completos para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?\",\n        \"Pregunta 5: Entendido, una impresora térmica con función de marca de agua, soporte para códigos 1D y 2D completos, y una velocidad de 250 mm/s o superior para tu farmacia. Para asegurarme de que encuentres la opción ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?\"\n    ],\n    \"sugerencias\": \"Se observa una repetición excesiva de la pregunta sobre el presupuesto en las preguntas 3, 4 y 5, a pesar de que el usuario no la había respondido directamente. Sería más eficiente preguntar por las características una vez y luego, si el presupuesto sigue siendo desconocido, preguntar por él. Alternativamente, se podría haber preguntado por el presupuesto en la Pregunta 2 y, al no obtener respuesta, haber pasado a preguntar por las características, integrando la pregunta del presupuesto al final o cuando se detecte que es un factor limitante. La redacción de las preguntas 3, 4 y 5 es muy similar y podría ser más variada para evitar la sensación de interrogatorio.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_10",
+      "scenario_name": "Usuario básico - Impresora de etiquetas",
+      "timestamp": "2025-11-24T17:21:33.673181",
+      "execution_time": 62.066107,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder ayudarte mejor, ¿podrías contarme cuál es tu presupuesto aproximado para esta impresora de etiquetas?",
+        "Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?",
+        "Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?",
+        "Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?"
+      ],
+      "user_responses": [
+        "Necesito una impresora de etiquetas",
+        "Para imprimir etiquetas de productos en mi tienda de abarrotes",
+        "Algo básico y fácil de usar",
+        "Con conexión USB",
+        "Presupuesto de hasta $200 USD"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora de etiquetas",
+        "presupuesto_min": null,
+        "presupuesto_max": 200.0,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "imprimir etiquetas de productos en tienda de abarrotes",
+        "caracteristicas_clave": [
+          "básico",
+          "fácil de usar",
+          "conexión USB"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "etiquetas",
+          "impresora de etiquetas",
+          "label printer",
+          "impresora etiquetas"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": 200,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "etiquetas de productos, tienda",
+        "caracteristicas_clave": [
+          "básico",
+          "fácil de usar",
+          "USB"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.5,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.75,
+          "caracteristicas_clave": 0.5,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.8214285714285714,
+        "accuracy_percentage": 82.14285714285714,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 3,
+        "mismatches": 0
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 6,
+          "relevancia": 7,
+          "naturalidad": 5,
+          "eficiencia": 5,
+          "completitud": 6,
+          "score_total": 5.8,
+          "comentarios": "Las preguntas intentan recopilar información útil, pero hay una repetición notable en la Pregunta 4 y 5, que son idénticas a la Pregunta 3. La información sobre el presupuesto se obtuvo de forma indirecta y tardía.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para poder ayudarte mejor, ¿podrías contarme cuál es tu presupuesto aproximado para esta impresora de etiquetas?",
+            "Pregunta 3: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 4: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?",
+            "Pregunta 5: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?"
+          ],
+          "sugerencias": "Evitar la repetición de preguntas. La Pregunta 4 y 5 son idénticas a la Pregunta 3, lo cual es ineficiente y puede ser frustrante para el usuario. Se debería haber preguntado por el presupuesto antes o de forma más directa. La información sobre el presupuesto se obtuvo como respuesta a la pregunta sobre el tipo de etiquetas, lo cual es una coincidencia y no un resultado de una pregunta bien formulada para ese fin. Se podría haber integrado la pregunta sobre el presupuesto de forma más natural o haberla hecho antes de preguntar por el tipo de etiquetas."
+        },
+        "raw_response": "{\n    \"contextualidad\": 6,\n    \"relevancia\": 7,\n    \"naturalidad\": 5,\n    \"eficiencia\": 5,\n    \"completitud\": 6,\n    \"score_total\": 5.8,\n    \"comentarios\": \"Las preguntas intentan recopilar información útil, pero hay una repetición notable en la Pregunta 4 y 5, que son idénticas a la Pregunta 3. La información sobre el presupuesto se obtuvo de forma indirecta y tardía.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para poder ayudarte mejor, ¿podrías contarme cuál es tu presupuesto aproximado para esta impresora de etiquetas?\",\n        \"Pregunta 3: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 4: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?\",\n        \"Pregunta 5: Entendido, para tu tienda de abarrotes, ¿qué tipo de etiquetas necesitas imprimir principalmente? ¿Son para precios, códigos de barras, fechas de caducidad, o algo más específico?\"\n    ],\n    \"sugerencias\": \"Evitar la repetición de preguntas. La Pregunta 4 y 5 son idénticas a la Pregunta 3, lo cual es ineficiente y puede ser frustrante para el usuario. Se debería haber preguntado por el presupuesto antes o de forma más directa. La información sobre el presupuesto se obtuvo como respuesta a la pregunta sobre el tipo de etiquetas, lo cual es una coincidencia y no un resultado de una pregunta bien formulada para ese fin. Se podría haber integrado la pregunta sobre el presupuesto de forma más natural o haberla hecho antes de preguntar por el tipo de etiquetas.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_11",
+      "scenario_name": "Usuario específico - Impresora de etiquetas térmica",
+      "timestamp": "2025-11-24T17:24:41.510436",
+      "execution_time": 62.04247,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte la mejor impresora de etiquetas para tu almacén, ¿tienes un presupuesto aproximado en mente?",
+        "Entendido, necesitas una impresora de etiquetas para almacén con capacidades de impresión térmica directa y por transferencia. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+        "Dado que necesitas impresión térmica directa y por transferencia, y una velocidad de al menos 5 IPS para tu almacén, ¿tienes alguna marca de impresora de etiquetas en mente o alguna preferencia en cuanto a tamaño o tipo de etiquetas que suelas usar?",
+        "Entendido, buscas una impresora de etiquetas para almacén con impresión térmica directa y por transferencia, una velocidad de al menos 5 IPS y una resolución de 203 DPI. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?"
+      ],
+      "user_responses": [
+        "Busco una impresora de etiquetas para almacén",
+        "Necesito impresión térmica directa y por transferencia",
+        "Velocidad de al menos 5 IPS",
+        "Resolución 203 DPI",
+        "Ancho de impresión de 104mm, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora de etiquetas",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "almacén",
+        "caracteristicas_clave": [
+          "impresión térmica directa",
+          "impresión por transferencia",
+          "velocidad de al menos 5 IPS",
+          "Resolución 203 DPI",
+          "Ancho de impresión de 104mm"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "etiquetas",
+          "impresora de etiquetas",
+          "label printer",
+          "impresora etiquetas"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "almacén",
+        "caracteristicas_clave": [
+          "térmica directa",
+          "transferencia térmica",
+          "5 IPS",
+          "203 DPI",
+          "104mm"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.5,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.0,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7857142857142857,
+        "accuracy_percentage": 78.57142857142857,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 1,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 7,
+          "relevancia": 8,
+          "naturalidad": 6,
+          "eficiencia": 7,
+          "completitud": 7,
+          "score_total": 7.0,
+          "comentarios": "Las preguntas intentan seguir el hilo de la conversación y recopilar información relevante. Se aprecia el esfuerzo por resumir la información obtenida antes de preguntar. Sin embargo, la repetición de la pregunta sobre el presupuesto es un punto débil.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para poder recomendarte la mejor impresora de etiquetas para tu almacén, ¿tienes un presupuesto aproximado en mente?",
+            "Pregunta 4: Dado que necesitas impresión térmica directa y por transferencia, y una velocidad de al menos 5 IPS para tu almacén, ¿tienes alguna marca de impresora de etiquetas en mente o alguna preferencia en cuanto a tamaño o tipo de etiquetas que suelas usar?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 3: Entendido, necesitas una impresora de etiquetas para almacén con capacidades de impresión térmica directa y por transferencia. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+            "Pregunta 5: Entendido, buscas una impresora de etiquetas para almacén con impresión térmica directa y por transferencia, una velocidad de al menos 5 IPS y una resolución de 203 DPI. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?"
+          ],
+          "sugerencias": "La principal área de mejora es evitar la repetición de preguntas. La Pregunta 3 y la Pregunta 5 repiten la consulta sobre el presupuesto, a pesar de que el usuario ya ha indicado que no tiene límite presupuestario en la última respuesta. Sería más eficiente preguntar por el presupuesto una vez y, si el usuario indica que no tiene límite, pasar a otras características. Se podría haber preguntado por el presupuesto en la Pregunta 2, y al recibir la respuesta 'Necesito impresión térmica directa y por transferencia', se podría haber pasado a preguntar por la velocidad o resolución, en lugar de volver a preguntar por el presupuesto en la Pregunta 3. La Pregunta 5 es especialmente redundante ya que el usuario ya ha indicado que no tiene presupuesto limitado."
+        },
+        "raw_response": "{\n    \"contextualidad\": 7,\n    \"relevancia\": 8,\n    \"naturalidad\": 6,\n    \"eficiencia\": 7,\n    \"completitud\": 7,\n    \"score_total\": 7.0,\n    \"comentarios\": \"Las preguntas intentan seguir el hilo de la conversación y recopilar información relevante. Se aprecia el esfuerzo por resumir la información obtenida antes de preguntar. Sin embargo, la repetición de la pregunta sobre el presupuesto es un punto débil.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para poder recomendarte la mejor impresora de etiquetas para tu almacén, ¿tienes un presupuesto aproximado en mente?\",\n        \"Pregunta 4: Dado que necesitas impresión térmica directa y por transferencia, y una velocidad de al menos 5 IPS para tu almacén, ¿tienes alguna marca de impresora de etiquetas en mente o alguna preferencia en cuanto a tamaño o tipo de etiquetas que suelas usar?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 3: Entendido, necesitas una impresora de etiquetas para almacén con capacidades de impresión térmica directa y por transferencia. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?\",\n        \"Pregunta 5: Entendido, buscas una impresora de etiquetas para almacén con impresión térmica directa y por transferencia, una velocidad de al menos 5 IPS y una resolución de 203 DPI. Para poder acotar las opciones y encontrar la que mejor se ajuste, ¿podrías indicarme cuál es tu presupuesto aproximado?\"\n    ],\n    \"sugerencias\": \"La principal área de mejora es evitar la repetición de preguntas. La Pregunta 3 y la Pregunta 5 repiten la consulta sobre el presupuesto, a pesar de que el usuario ya ha indicado que no tiene límite presupuestario en la última respuesta. Sería más eficiente preguntar por el presupuesto una vez y, si el usuario indica que no tiene límite, pasar a otras características. Se podría haber preguntado por el presupuesto en la Pregunta 2, y al recibir la respuesta 'Necesito impresión térmica directa y por transferencia', se podría haber pasado a preguntar por la velocidad o resolución, en lugar de volver a preguntar por el presupuesto en la Pregunta 3. La Pregunta 5 es especialmente redundante ya que el usuario ya ha indicado que no tiene presupuesto limitado.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_12",
+      "scenario_name": "Usuario básico - Lector de código de barras",
+      "timestamp": "2025-11-24T17:27:49.319506",
+      "execution_time": 61.925349,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte el lector de código de barras ideal, ¿podrías contarme un poco más sobre dónde y cómo lo vas a utilizar principalmente? Por ejemplo, ¿será para un negocio, para uso personal, en un almacén, en una tienda, o para alguna otra actividad específica?",
+        "Para poder acotar las opciones y asegurarnos de que el lector se ajuste perfectamente a tu tienda de conveniencia, ¿tienes un presupuesto aproximado en mente? Esto me ayudará a enfocar la búsqueda en modelos que se ajusten a tus posibilidades.",
+        "Dado que buscas algo básico y económico para tu tienda de conveniencia, ¿hay algún tipo de código de barras específico que suelas escanear con más frecuencia (por ejemplo, códigos 1D como los de los productos, o quizás códigos 2D como los QR)?",
+        "Considerando que buscas un lector de código de barras básico, económico y con conexión USB para tu tienda de conveniencia, ¿hay alguna marca en particular que prefieras o alguna que hayas usado antes y te haya funcionado bien?"
+      ],
+      "user_responses": [
+        "Necesito un lector de código de barras",
+        "Para escanear productos en mi tienda de conveniencia",
+        "Algo básico y económico",
+        "Con conexión USB",
+        "Presupuesto máximo de $80 USD"
+      ],
+      "extracted_info": {
+        "categoria_producto": "lector de código de barras",
+        "presupuesto_min": null,
+        "presupuesto_max": 80.0,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "escanear productos en tienda de conveniencia",
+        "caracteristicas_clave": [
+          "conexión USB"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [
+          "básico",
+          "económico"
+        ],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 75.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "lectores",
+          "lector de código de barras",
+          "scanner",
+          "barcode reader"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": 80,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "escanear productos, tienda",
+        "caracteristicas_clave": [
+          "básico",
+          "económico",
+          "USB"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.6666666666666666,
+          "caracteristicas_clave": 0.0,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7023809523809523,
+        "accuracy_percentage": 70.23809523809523,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 1,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen de manera lógica el flujo de la conversación, construyendo sobre las respuestas anteriores. Se enfocan en obtener detalles clave para la recomendación. El lenguaje es natural y fácil de entender.",
+          "mejores_preguntas": [
+            "Pregunta 2: Para poder recomendarte el lector de código de barras ideal, ¿podrías contarme un poco más sobre dónde y cómo lo vas a utilizar principalmente? Por ejemplo, ¿será para un negocio, para uso personal, en un almacén, en una tienda, o para alguna otra actividad específica?",
+            "Pregunta 4: Dado que buscas algo básico y económico para tu tienda de conveniencia, ¿hay algún tipo de código de barras específico que suelas escanear con más frecuencia (por ejemplo, códigos 1D como los de los productos, o quizás códigos 2D como los QR)?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 5: Considerando que buscas un lector de código de barras básico, económico y con conexión USB para tu tienda de conveniencia, ¿hay alguna marca en particular que prefieras o alguna que hayas usado antes y te haya funcionado bien?"
+          ],
+          "sugerencias": "La pregunta 5 podría ser más eficiente. Dado que el usuario ya ha especificado 'básico y económico', preguntar por marcas preferidas podría ser menos relevante en este punto, a menos que se quiera explorar opciones de gama baja de marcas conocidas. Sería más útil preguntar directamente por el presupuesto máximo o si hay alguna característica de rendimiento específica que necesite (ej. velocidad de escaneo, resistencia a caídas, etc.) antes de preguntar por marcas. La pregunta 3 sobre el presupuesto se responde en la pregunta 5, lo cual es una pequeña redundancia. Se podría haber integrado mejor la información del presupuesto."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen de manera lógica el flujo de la conversación, construyendo sobre las respuestas anteriores. Se enfocan en obtener detalles clave para la recomendación. El lenguaje es natural y fácil de entender.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 2: Para poder recomendarte el lector de código de barras ideal, ¿podrías contarme un poco más sobre dónde y cómo lo vas a utilizar principalmente? Por ejemplo, ¿será para un negocio, para uso personal, en un almacén, en una tienda, o para alguna otra actividad específica?\",\n        \"Pregunta 4: Dado que buscas algo básico y económico para tu tienda de conveniencia, ¿hay algún tipo de código de barras específico que suelas escanear con más frecuencia (por ejemplo, códigos 1D como los de los productos, o quizás códigos 2D como los QR)?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 5: Considerando que buscas un lector de código de barras básico, económico y con conexión USB para tu tienda de conveniencia, ¿hay alguna marca en particular que prefieras o alguna que hayas usado antes y te haya funcionado bien?\"\n    ],\n    \"sugerencias\": \"La pregunta 5 podría ser más eficiente. Dado que el usuario ya ha especificado 'básico y económico', preguntar por marcas preferidas podría ser menos relevante en este punto, a menos que se quiera explorar opciones de gama baja de marcas conocidas. Sería más útil preguntar directamente por el presupuesto máximo o si hay alguna característica de rendimiento específica que necesite (ej. velocidad de escaneo, resistencia a caídas, etc.) antes de preguntar por marcas. La pregunta 3 sobre el presupuesto se responde en la pregunta 5, lo cual es una pequeña redundancia. Se podría haber integrado mejor la información del presupuesto.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 75.0,
+      "thresholds_passed": {
+        "extraction_accuracy": false,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": false
+    },
+    {
+      "scenario_id": "pos_scenario_13",
+      "scenario_name": "Usuario específico - Lector láser 1D",
+      "timestamp": "2025-11-24T17:30:57.143748",
+      "execution_time": 61.72339,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte el mejor lector de código de barras láser, ¿podrías darme una idea de tu presupuesto aproximado?",
+        "Entendido, para un supermercado, ¿necesitas un lector de códigos de barras que sea inalámbrico o prefieres uno con cable?",
+        "Dado que lo usarás en un supermercado y necesitas que lea códigos 1D como EAN-13, UPC y CODE128, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?",
+        "Entendido, para un supermercado y con esas características de lectura, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?"
+      ],
+      "user_responses": [
+        "Busco un lector de código de barras láser",
+        "Para supermercado",
+        "Que lea códigos 1D como EAN-13, UPC, CODE128",
+        "Modo manual y continuo",
+        "Conexión USB, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "lector de código de barras",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "supermercado",
+        "caracteristicas_clave": [
+          "láser",
+          "código 1D",
+          "EAN-13",
+          "UPC",
+          "CODE128",
+          "modo manual",
+          "modo continuo",
+          "Conexión USB"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "lectores",
+          "lector de código de barras",
+          "scanner",
+          "barcode reader"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "supermercado",
+        "caracteristicas_clave": [
+          "láser",
+          "1D",
+          "EAN-13",
+          "UPC",
+          "CODE128",
+          "manual",
+          "continuo",
+          "USB"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.3333333333333333,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7976190476190476,
+        "accuracy_percentage": 79.76190476190476,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 7,
+          "relevancia": 8,
+          "naturalidad": 6,
+          "eficiencia": 7,
+          "completitud": 8,
+          "score_total": 7.2,
+          "comentarios": "Las preguntas intentan seguir el hilo de la conversación y obtener información relevante para la recomendación. Se aprecia el esfuerzo por refinar los detalles del producto. La información sobre el presupuesto limitado se maneja adecuadamente.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para poder recomendarte el mejor lector de código de barras láser, ¿podrías darme una idea de tu presupuesto aproximado?",
+            "Pregunta 3: Entendido, para un supermercado, ¿necesitas un lector de códigos de barras que sea inalámbrico o prefieres uno con cable?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 4: Dado que lo usarás en un supermercado y necesitas que lea códigos 1D como EAN-13, UPC y CODE128, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?",
+            "Pregunta 5: Entendido, para un supermercado y con esas características de lectura, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?"
+          ],
+          "sugerencias": "Las preguntas 4 y 5 son redundantes en cuanto a preguntar si el lector debe ser con cable o inalámbrico, ya que esta información se solicitó en la pregunta 3. Se debería haber integrado la información de 'modo manual y continuo' y 'conexión USB' en una pregunta posterior o haber reformulado la pregunta 4 para incluir estas nuevas características. Además, la pregunta 5 repite la pregunta sobre cable/inalámbrico de forma innecesaria. Sería más eficiente consolidar las preguntas y evitar la repetición. Por ejemplo, tras la respuesta 3, se podría haber preguntado: 'Entendido. Y en cuanto a la operación, ¿prefieres que sea de modo manual, continuo, o ambos? ¿Y qué tipo de conexión necesitas, como USB?'"
+        },
+        "raw_response": "{\n    \"contextualidad\": 7,\n    \"relevancia\": 8,\n    \"naturalidad\": 6,\n    \"eficiencia\": 7,\n    \"completitud\": 8,\n    \"score_total\": 7.2,\n    \"comentarios\": \"Las preguntas intentan seguir el hilo de la conversación y obtener información relevante para la recomendación. Se aprecia el esfuerzo por refinar los detalles del producto. La información sobre el presupuesto limitado se maneja adecuadamente.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para poder recomendarte el mejor lector de código de barras láser, ¿podrías darme una idea de tu presupuesto aproximado?\",\n        \"Pregunta 3: Entendido, para un supermercado, ¿necesitas un lector de códigos de barras que sea inalámbrico o prefieres uno con cable?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 4: Dado que lo usarás en un supermercado y necesitas que lea códigos 1D como EAN-13, UPC y CODE128, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?\",\n        \"Pregunta 5: Entendido, para un supermercado y con esas características de lectura, ¿tienes alguna preferencia en cuanto a si el lector debe ser con cable o inalámbrico?\"\n    ],\n    \"sugerencias\": \"Las preguntas 4 y 5 son redundantes en cuanto a preguntar si el lector debe ser con cable o inalámbrico, ya que esta información se solicitó en la pregunta 3. Se debería haber integrado la información de 'modo manual y continuo' y 'conexión USB' en una pregunta posterior o haber reformulado la pregunta 4 para incluir estas nuevas características. Además, la pregunta 5 repite la pregunta sobre cable/inalámbrico de forma innecesaria. Sería más eficiente consolidar las preguntas y evitar la repetición. Por ejemplo, tras la respuesta 3, se podría haber preguntado: 'Entendido. Y en cuanto a la operación, ¿prefieres que sea de modo manual, continuo, o ambos? ¿Y qué tipo de conexión necesitas, como USB?'\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_14",
+      "scenario_name": "Usuario profesional - Lector 2D inalámbrico",
+      "timestamp": "2025-11-24T17:34:05.057981",
+      "execution_time": 61.966967,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder recomendarte el mejor lector de código de barras 2D inalámbrico, ¿tienes un presupuesto aproximado en mente?",
+        "Entendido, para una farmacia, es crucial que el lector sea confiable y rápido. ¿Tienes alguna marca de lectores de código de barras en mente o alguna preferencia en cuanto a la durabilidad y resistencia del dispositivo?",
+        "Dado que necesitas leer códigos QR y DataMatrix en una farmacia con tecnología de imager de área, ¿cuál sería tu presupuesto aproximado para este lector de código de barras inalámbrico?",
+        "Considerando que necesitas un lector de código de barras 2D inalámbrico con tecnología de imager de área y una resolución mínima de 1280 x 960 píxeles para una farmacia, ¿cuál es tu presupuesto aproximado para esta inversión?"
+      ],
+      "user_responses": [
+        "Necesito un lector de código de barras 2D inalámbrico",
+        "Para farmacia, necesito leer QR codes y DataMatrix",
+        "Tecnología de imager de área",
+        "Resolución mínima de 1280 x 960 píxeles",
+        "Batería de al menos 7 horas, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "lector de código de barras",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "farmacia",
+        "caracteristicas_clave": [
+          "2D",
+          "inalámbrico",
+          "leer QR codes",
+          "leer DataMatrix",
+          "tecnología de imager de área",
+          "resolución mínima de 1280 x 960 píxeles",
+          "Batería de al menos 7 horas"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "lectores",
+          "lector de código de barras",
+          "scanner",
+          "barcode reader"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "farmacia",
+        "caracteristicas_clave": [
+          "2D",
+          "inalámbrico",
+          "QR codes",
+          "DataMatrix",
+          "imager de área",
+          "1280 x 960",
+          "7 horas batería"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.16666666666666666,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7738095238095238,
+        "accuracy_percentage": 77.38095238095238,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 8,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas siguen bien el hilo de la conversación, construyendo sobre la información proporcionada por el usuario. Se centran en obtener detalles técnicos y de uso relevantes para la recomendación de un lector de código de barras. La progresión es lógica y evita la repetición innecesaria.",
+          "mejores_preguntas": [
+            "Pregunta 4: Dado que necesitas leer códigos QR y DataMatrix en una farmacia con tecnología de imager de área, ¿cuál sería tu presupuesto aproximado para este lector de código de barras inalámbrico?",
+            "Pregunta 5: Considerando que necesitas un lector de código de barras 2D inalámbrico con tecnología de imager de área y una resolución mínima de 1280 x 960 píxeles para una farmacia, ¿cuál es tu presupuesto aproximado para esta inversión?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 3: Entendido, para una farmacia, es crucial que el lector sea confiable y rápido. ¿Tienes alguna marca de lectores de código de barras en mente o alguna preferencia en cuanto a la durabilidad y resistencia del dispositivo?"
+          ],
+          "sugerencias": "La pregunta 3 introduce dos aspectos (marca y durabilidad/resistencia) que no se habían mencionado previamente y que podrían haber sido abordados de forma más gradual. Podría haberse preguntado primero por la durabilidad/resistencia, y luego, si el usuario mostraba interés o si era relevante para la recomendación, preguntar por marcas. La pregunta 5 repite la solicitud del presupuesto de forma muy similar a la pregunta 4, aunque la reformulación es buena, podría haber sido más eficiente preguntar por la batería directamente después de confirmar el presupuesto o la ausencia de él. Una vez que el usuario indica 'no tengo presupuesto limitado', la siguiente pregunta debería haber sido sobre la batería o alguna otra característica técnica clave, en lugar de volver a preguntar por el presupuesto."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 7,\n    \"eficiencia\": 8,\n    \"completitud\": 8,\n    \"score_total\": 8.0,\n    \"comentarios\": \"Las preguntas siguen bien el hilo de la conversación, construyendo sobre la información proporcionada por el usuario. Se centran en obtener detalles técnicos y de uso relevantes para la recomendación de un lector de código de barras. La progresión es lógica y evita la repetición innecesaria.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 4: Dado que necesitas leer códigos QR y DataMatrix en una farmacia con tecnología de imager de área, ¿cuál sería tu presupuesto aproximado para este lector de código de barras inalámbrico?\",\n        \"Pregunta 5: Considerando que necesitas un lector de código de barras 2D inalámbrico con tecnología de imager de área y una resolución mínima de 1280 x 960 píxeles para una farmacia, ¿cuál es tu presupuesto aproximado para esta inversión?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 3: Entendido, para una farmacia, es crucial que el lector sea confiable y rápido. ¿Tienes alguna marca de lectores de código de barras en mente o alguna preferencia en cuanto a la durabilidad y resistencia del dispositivo?\"\n    ],\n    \"sugerencias\": \"La pregunta 3 introduce dos aspectos (marca y durabilidad/resistencia) que no se habían mencionado previamente y que podrían haber sido abordados de forma más gradual. Podría haberse preguntado primero por la durabilidad/resistencia, y luego, si el usuario mostraba interés o si era relevante para la recomendación, preguntar por marcas. La pregunta 5 repite la solicitud del presupuesto de forma muy similar a la pregunta 4, aunque la reformulación es buena, podría haber sido más eficiente preguntar por la batería directamente después de confirmar el presupuesto o la ausencia de él. Una vez que el usuario indica 'no tengo presupuesto limitado', la siguiente pregunta debería haber sido sobre la batería o alguna otra característica técnica clave, en lugar de volver a preguntar por el presupuesto.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_15",
+      "scenario_name": "Usuario básico - Monitor táctil",
+      "timestamp": "2025-11-24T17:37:12.395761",
+      "execution_time": 61.419195,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder ayudarte mejor a encontrar el monitor táctil ideal, ¿tienes alguna idea del presupuesto aproximado que tenías en mente?",
+        "Entendido, para tu cafetería, ¿qué tamaño de pantalla crees que sería más adecuado para el punto de venta?",
+        "Considerando que es para el punto de venta de tu cafetería, ¿tienes alguna preferencia en cuanto al tamaño de la pantalla?",
+        "Dado que es para el punto de venta de tu cafetería, ¿tienes alguna marca de monitor en mente o alguna que hayas usado antes y te haya funcionado bien?"
+      ],
+      "user_responses": [
+        "Necesito un monitor táctil",
+        "Para punto de venta en mi cafetería",
+        "Que sea táctil y fácil de usar",
+        "De tamaño entre 15 y 17 pulgadas",
+        "Presupuesto de hasta $300 USD"
+      ],
+      "extracted_info": {
+        "categoria_producto": "monitor",
+        "presupuesto_min": null,
+        "presupuesto_max": 300.0,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "punto de venta",
+        "caracteristicas_clave": [
+          "táctil",
+          "fácil de usar",
+          "15 a 17 pulgadas"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": "para mi cafetería | para mi cafetería | para mi cafetería | para mi cafetería",
+        "information_score": 85.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "monitores",
+          "monitor táctil",
+          "touchscreen",
+          "pantalla táctil"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": 300,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "punto de venta, cafetería",
+        "caracteristicas_clave": [
+          "táctil",
+          "15-17 pulgadas"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.5,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.5,
+          "caracteristicas_clave": 0.25,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.75,
+        "accuracy_percentage": 75.0,
+        "fields_evaluated": 7,
+        "perfect_matches": 4,
+        "partial_matches": 2,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 7.8,
+          "comentarios": "Las preguntas logran extraer información clave sobre el uso del producto, el tamaño y el presupuesto. Se mantiene el contexto de la cafetería de forma consistente.",
+          "mejores_preguntas": [
+            "Pregunta 3: Entendido, para tu cafetería, ¿qué tamaño de pantalla crees que sería más adecuado para el punto de venta?",
+            "Pregunta 5: Dado que es para el punto de venta de tu cafetería, ¿tienes alguna marca de monitor en mente o alguna que hayas usado antes y te haya funcionado bien?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 4: Considerando que es para el punto de venta de tu cafetería, ¿tienes alguna preferencia en cuanto al tamaño de la pantalla?"
+          ],
+          "sugerencias": "La Pregunta 4 es redundante ya que la Pregunta 3 ya preguntó sobre el tamaño de la pantalla. Se podría haber integrado la pregunta sobre el presupuesto antes, o haberla formulado de manera que no se repitiera la consulta sobre el tamaño. La pregunta sobre la marca (Pregunta 5) podría haber sido formulada de forma más abierta, por ejemplo, '¿Hay alguna marca que prefieras o que quieras evitar?' para obtener una respuesta más útil si el usuario no tiene una marca específica en mente."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 7,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 7.8,\n    \"comentarios\": \"Las preguntas logran extraer información clave sobre el uso del producto, el tamaño y el presupuesto. Se mantiene el contexto de la cafetería de forma consistente.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3: Entendido, para tu cafetería, ¿qué tamaño de pantalla crees que sería más adecuado para el punto de venta?\",\n        \"Pregunta 5: Dado que es para el punto de venta de tu cafetería, ¿tienes alguna marca de monitor en mente o alguna que hayas usado antes y te haya funcionado bien?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 4: Considerando que es para el punto de venta de tu cafetería, ¿tienes alguna preferencia en cuanto al tamaño de la pantalla?\"\n    ],\n    \"sugerencias\": \"La Pregunta 4 es redundante ya que la Pregunta 3 ya preguntó sobre el tamaño de la pantalla. Se podría haber integrado la pregunta sobre el presupuesto antes, o haberla formulado de manera que no se repitiera la consulta sobre el tamaño. La pregunta sobre la marca (Pregunta 5) podría haber sido formulada de forma más abierta, por ejemplo, '¿Hay alguna marca que prefieras o que quieras evitar?' para obtener una respuesta más útil si el usuario no tiene una marca específica en mente.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 85.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_16",
+      "scenario_name": "Usuario específico - Monitor táctil capacitivo multitoque",
+      "timestamp": "2025-11-24T17:40:20.501794",
+      "execution_time": 61.747871,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder ayudarte mejor a encontrar el monitor táctil de 15 pulgadas ideal, ¿tienes un presupuesto aproximado en mente?",
+        "Entendido, un monitor táctil de 15 pulgadas con tecnología capacitiva y multitoque. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿tienes un presupuesto aproximado en mente?",
+        "¡Perfecto! Ya tenemos las características clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque y resolución 1024 x 768.\n\nPara poder ayudarte a encontrar el modelo ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+        "Entendido, ya tenemos las especificaciones clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque, resolución 1024 x 768 y montaje VESA 75mm x 75mm.\n\nPara poder acotar aún más las opciones y asegurarnos de que sea la elección perfecta, ¿tienes un presupuesto aproximado en mente?"
+      ],
+      "user_responses": [
+        "Busco un monitor táctil de 15 pulgadas",
+        "Tecnología capacitiva con multitoque",
+        "Resolución 1024 x 768",
+        "Que tenga montaje VESA 75mm x 75mm",
+        "Brillo mínimo de 300 nits, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "monitor",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": null,
+        "caracteristicas_clave": [
+          "táctil",
+          "15 pulgadas",
+          "tecnología capacitiva",
+          "multitoque",
+          "Resolución 1024 x 768",
+          "montaje VESA 75mm x 75mm",
+          "Brillo mínimo de 300 nits"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "monitores",
+          "monitor táctil",
+          "touchscreen",
+          "pantalla táctil"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": null,
+        "caracteristicas_clave": [
+          "15 pulgadas",
+          "capacitivo",
+          "multitoque",
+          "1024 x 768",
+          "VESA 75mm",
+          "300 nits"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.5,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.18181818181818182,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.8116883116883117,
+        "accuracy_percentage": 81.16883116883116,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 1,
+        "mismatches": 1
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 7,
+          "score_total": 7.8,
+          "comentarios": "Las preguntas siguen bien el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles técnicos importantes para la recomendación de un monitor. La repetición de la pregunta sobre el presupuesto, aunque justificada por la falta de respuesta, podría haberse manejado de forma más fluida.",
+          "mejores_preguntas": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para poder ayudarte mejor a encontrar el monitor táctil de 15 pulgadas ideal, ¿tienes un presupuesto aproximado en mente?",
+            "Pregunta 3: Entendido, un monitor táctil de 15 pulgadas con tecnología capacitiva y multitoque. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿tienes un presupuesto aproximado en mente?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 4: ¡Perfecto! Ya tenemos las características clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque y resolución 1024 x 768. Para poder ayudarte a encontrar el modelo ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?",
+            "Pregunta 5: Entendido, ya tenemos las especificaciones clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque, resolución 1024 x 768 y montaje VESA 75mm x 75mm. Para poder acotar aún más las opciones y asegurarnos de que sea la elección perfecta, ¿tienes un presupuesto aproximado en mente?"
+          ],
+          "sugerencias": "Se observa una repetición de la pregunta sobre el presupuesto. Si bien es importante obtener esta información, después de la tercera pregunta, el usuario ya ha proporcionado varias características técnicas. En lugar de volver a preguntar por el presupuesto de forma idéntica, se podría haber intentado una formulación diferente, como: 'Dado que ya tenemos estas especificaciones técnicas, ¿hay algún rango de precio que tengas en mente o prefieres que te muestre opciones sin límite de presupuesto?' o 'Para refinar la búsqueda, ¿cuál sería tu presupuesto ideal para este monitor?' Esto haría las preguntas 4 y 5 más dinámicas y menos repetitivas, mejorando la naturalidad y eficiencia."
+        },
+        "raw_response": "{\n    \"contextualidad\": 8,\n    \"relevancia\": 9,\n    \"naturalidad\": 7,\n    \"eficiencia\": 8,\n    \"completitud\": 7,\n    \"score_total\": 7.8,\n    \"comentarios\": \"Las preguntas siguen bien el hilo de la conversación, construyendo sobre la información previamente proporcionada. Se enfocan en obtener detalles técnicos importantes para la recomendación de un monitor. La repetición de la pregunta sobre el presupuesto, aunque justificada por la falta de respuesta, podría haberse manejado de forma más fluida.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para poder ayudarte mejor a encontrar el monitor táctil de 15 pulgadas ideal, ¿tienes un presupuesto aproximado en mente?\",\n        \"Pregunta 3: Entendido, un monitor táctil de 15 pulgadas con tecnología capacitiva y multitoque. Para poder acotar las opciones y asegurarnos de que se ajuste a tus necesidades, ¿tienes un presupuesto aproximado en mente?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 4: ¡Perfecto! Ya tenemos las características clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque y resolución 1024 x 768. Para poder ayudarte a encontrar el modelo ideal, ¿podrías indicarme cuál es tu presupuesto aproximado?\",\n        \"Pregunta 5: Entendido, ya tenemos las especificaciones clave: un monitor táctil de 15 pulgadas, tecnología capacitiva, multitoque, resolución 1024 x 768 y montaje VESA 75mm x 75mm. Para poder acotar aún más las opciones y asegurarnos de que sea la elección perfecta, ¿tienes un presupuesto aproximado en mente?\"\n    ],\n    \"sugerencias\": \"Se observa una repetición de la pregunta sobre el presupuesto. Si bien es importante obtener esta información, después de la tercera pregunta, el usuario ya ha proporcionado varias características técnicas. En lugar de volver a preguntar por el presupuesto de forma idéntica, se podría haber intentado una formulación diferente, como: 'Dado que ya tenemos estas especificaciones técnicas, ¿hay algún rango de precio que tengas en mente o prefieres que te muestre opciones sin límite de presupuesto?' o 'Para refinar la búsqueda, ¿cuál sería tu presupuesto ideal para este monitor?' Esto haría las preguntas 4 y 5 más dinámicas y menos repetitivas, mejorando la naturalidad y eficiencia.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_17",
+      "scenario_name": "Usuario vago - Solicitud ambigua",
+      "timestamp": "2025-11-24T17:43:23.435429",
+      "execution_time": 56.404175,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "¡Claro! Para poder ayudarte mejor con tu negocio, ¿podrías decirme qué tipo de producto necesitas? Por ejemplo, ¿estás buscando un ordenador, un teléfono, software, o algo completamente diferente?",
+        "Entiendo que necesitas algo para tu negocio pero aún no tienes claro qué. Para empezar a acotar, ¿podrías contarme un poco más sobre la naturaleza de tu negocio? Por ejemplo, ¿es un negocio online, una tienda física, un servicio profesional, o algo más?",
+        "Entiendo que necesitas algo que funcione bien para tu negocio, pero aún no sabemos qué tipo de producto es. Para poder ayudarte mejor, ¿podrías darme una idea del **tipo de tarea o problema** que esperas que este producto resuelva en tu negocio? Por ejemplo, ¿necesitas algo para comunicarte con clientes, organizar información, crear contenido, o gestionar inventario?",
+        "Dado que buscas algo que funcione bien para tu negocio y no tienes limitaciones de presupuesto, ¿podrías describir el **área específica de tu negocio** en la que esperas que este producto tenga un impacto? Por ejemplo, ¿se trata de mejorar la productividad del equipo, optimizar la atención al cliente, agilizar procesos internos, o expandir tu alcance de marketing?"
+      ],
+      "user_responses": [
+        "Necesito algo para mi negocio",
+        "No sé qué necesito exactamente",
+        "Algo que funcione bien",
+        "Sin preferencias específicas, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": null,
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "negocio",
+        "caracteristicas_clave": [
+          "que funcione bien"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": "Necesito algo para mi negocio | No sé qué necesito exactamente | Necesito algo para mi negocio | No sé qué necesito exactamente... | No tengo presupuesto limitado",
+        "information_score": 50.0
+      },
+      "expected_info": {
+        "categoria_producto": null,
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "negocio",
+        "caracteristicas_clave": [],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 1.0,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.5,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.9285714285714286,
+        "accuracy_percentage": 92.85714285714286,
+        "fields_evaluated": 7,
+        "perfect_matches": 6,
+        "partial_matches": 1,
+        "mismatches": 0
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 7,
+          "relevancia": 6,
+          "naturalidad": 8,
+          "eficiencia": 5,
+          "completitud": 4,
+          "score_total": 6.0,
+          "comentarios": "Las preguntas intentan guiar al usuario, pero la falta de claridad en las respuestas del usuario dificulta la contextualización y la obtención de información relevante. La pregunta 4 es la que mejor intenta obtener información útil a pesar de las respuestas vagas.",
+          "mejores_preguntas": [
+            "Pregunta 4: Entiendo que necesitas algo que funcione bien para tu negocio, pero aún no sabemos qué tipo de producto es. Para poder ayudarte mejor, ¿podrías darme una idea del **tipo de tarea o problema** que esperas que este producto resuelva en tu negocio? Por ejemplo, ¿necesitas algo para comunicarte con clientes, organizar información, crear contenido, o gestionar inventario?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: ¡Claro! Para poder ayudarte mejor con tu negocio, ¿podrías decirme qué tipo de producto necesitas? Por ejemplo, ¿estás buscando un ordenador, un teléfono, software, o algo completamente diferente?",
+            "Pregunta 3: Entiendo que necesitas algo para tu negocio pero aún no tienes claro qué. Para empezar a acotar, ¿podrías contarme un poco más sobre la naturaleza de tu negocio? Por ejemplo, ¿es un negocio online, una tienda física, un servicio profesional, o algo más?"
+          ],
+          "sugerencias": "Dado que el usuario responde de forma muy vaga ('No sé qué necesito exactamente', 'Algo que funcione bien'), las preguntas deben ser más directivas y ofrecer opciones más concretas para facilitar la respuesta. Se podría intentar categorizar el tipo de negocio de forma más amplia y luego ofrecer ejemplos de productos o soluciones para cada categoría. Por ejemplo, en lugar de preguntar 'qué tipo de producto', se podría preguntar '¿Tu negocio se enfoca más en la venta de productos físicos, servicios, o contenido digital?'. La información sobre 'sin presupuesto limitado' debería haberse extraído antes o de forma más explícita. La pregunta 4 es un buen intento de obtener información sobre el uso, pero aún así es muy general. Se podría intentar preguntar sobre los 'dolores' o 'desafíos' actuales del negocio."
+        },
+        "raw_response": "{\n    \"contextualidad\": 7,\n    \"relevancia\": 6,\n    \"naturalidad\": 8,\n    \"eficiencia\": 5,\n    \"completitud\": 4,\n    \"score_total\": 6.0,\n    \"comentarios\": \"Las preguntas intentan guiar al usuario, pero la falta de claridad en las respuestas del usuario dificulta la contextualización y la obtención de información relevante. La pregunta 4 es la que mejor intenta obtener información útil a pesar de las respuestas vagas.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 4: Entiendo que necesitas algo que funcione bien para tu negocio, pero aún no sabemos qué tipo de producto es. Para poder ayudarte mejor, ¿podrías darme una idea del **tipo de tarea o problema** que esperas que este producto resuelva en tu negocio? Por ejemplo, ¿necesitas algo para comunicarte con clientes, organizar información, crear contenido, o gestionar inventario?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: ¡Claro! Para poder ayudarte mejor con tu negocio, ¿podrías decirme qué tipo de producto necesitas? Por ejemplo, ¿estás buscando un ordenador, un teléfono, software, o algo completamente diferente?\",\n        \"Pregunta 3: Entiendo que necesitas algo para tu negocio pero aún no tienes claro qué. Para empezar a acotar, ¿podrías contarme un poco más sobre la naturaleza de tu negocio? Por ejemplo, ¿es un negocio online, una tienda física, un servicio profesional, o algo más?\"\n    ],\n    \"sugerencias\": \"Dado que el usuario responde de forma muy vaga ('No sé qué necesito exactamente', 'Algo que funcione bien'), las preguntas deben ser más directivas y ofrecer opciones más concretas para facilitar la respuesta. Se podría intentar categorizar el tipo de negocio de forma más amplia y luego ofrecer ejemplos de productos o soluciones para cada categoría. Por ejemplo, en lugar de preguntar 'qué tipo de producto', se podría preguntar '¿Tu negocio se enfoca más en la venta de productos físicos, servicios, o contenido digital?'. La información sobre 'sin presupuesto limitado' debería haberse extraído antes o de forma más explícita. La pregunta 4 es un buen intento de obtener información sobre el uso, pero aún así es muy general. Se podría intentar preguntar sobre los 'dolores' o 'desafíos' actuales del negocio.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 50.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_18",
+      "scenario_name": "Usuario comparativo - Entre marcas AIO",
+      "timestamp": "2025-11-24T17:46:30.695013",
+      "execution_time": 61.649373,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para poder ayudarte mejor a comparar estos equipos AIO, ¿podrías contarme cuál es tu presupuesto aproximado?",
+        "Entendido, buscas un AIO con procesador J6412. Para poder comparar mejor entre 3NSTAR y SAT PCS, ¿cuál es tu presupuesto aproximado para este equipo?",
+        "Considerando que será para un restaurante de comida rápida, ¿qué otras características son importantes para ti además del procesador J6412? Por ejemplo, ¿necesitas que sea resistente a salpicaduras, fácil de limpiar o que tenga una pantalla táctil específica?",
+        "Considerando que será para un restaurante de comida rápida y que buscas un procesador J6412, ¿hay alguna otra característica que sea crucial para ti, como resistencia a salpicaduras, facilidad de limpieza o alguna especificación de pantalla táctil?"
+      ],
+      "user_responses": [
+        "Estoy comparando equipos AIO entre 3NSTAR y SAT PCS",
+        "Necesito uno con procesador J6412",
+        "Para restaurante de comida rápida",
+        "¿Cuál me recomiendas?",
+        "Que tenga buena garantía, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "AIO",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante de comida rápida",
+        "caracteristicas_clave": [
+          "procesador J6412",
+          "buena garantía"
+        ],
+        "preferencias_marca": [
+          "3NSTAR",
+          "SAT PCS"
+        ],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": "El usuario está comparando equipos AIO entre las marcas 3NSTAR y SAT PCS. | El usuario está comparando equipos AIO entre las marcas 3NSTAR y SAT PCS. | El usuario está comparando equipos AIO entre las marcas 3NSTAR y SAT PCS. | El usuario está comparando equipos AIO entre las marcas 3NSTAR y SAT PCS. | El usuario está comparando equipos AIO entre las marcas 3NSTAR y SAT PCS.",
+        "information_score": 90.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "aio",
+          "equipo aio",
+          "equipo all-in-one"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "restaurante comida rápida",
+        "caracteristicas_clave": [
+          "procesador J6412",
+          "buena garantía"
+        ],
+        "preferencias_marca": [
+          "3NSTAR",
+          "SAT PCS"
+        ],
+        "contexto_adicional": "Comparación entre marcas específicas"
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.6666666666666666,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 1.0,
+          "preferencias_marca": 1.0,
+          "contexto_adicional": 0.5
+        },
+        "average_score": 0.8958333333333333,
+        "accuracy_percentage": 89.58333333333333,
+        "fields_evaluated": 8,
+        "perfect_matches": 6,
+        "partial_matches": 2,
+        "mismatches": 0
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 8,
+          "relevancia": 9,
+          "naturalidad": 7,
+          "eficiencia": 8,
+          "completitud": 8,
+          "score_total": 8.0,
+          "comentarios": "Las preguntas logran extraer información clave sobre las preferencias del usuario, como el tipo de procesador, el uso principal y la importancia de la garantía. La conversación fluye razonablemente bien, aunque hay cierta redundancia en la pregunta 5 al reiterar información ya conocida.",
+          "mejores_preguntas": [
+            "Pregunta 4: Considerando que será para un restaurante de comida rápida, ¿qué otras características son importantes para ti además del procesador J6412? Por ejemplo, ¿necesitas que sea resistente a salpicaduras, fácil de limpiar o que tenga una pantalla táctil específica?",
+            "Pregunta 3: Para restaurante de comida rápida"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 5: Considerando que será para un restaurante de comida rápida y que buscas un procesador J6412, ¿hay alguna otra característica que sea crucial para ti, como resistencia a salpicaduras, facilidad de limpieza o alguna especificación de pantalla táctil?"
+          ],
+          "sugerencias": "La pregunta 5 es un poco redundante ya que reitera información que ya se ha discutido o implícito en la pregunta 4. Se podría haber formulado de manera más directa para obtener nueva información, por ejemplo: 'Además de la resistencia y facilidad de limpieza, ¿hay alguna otra característica específica que busques en la pantalla táctil o en la durabilidad del equipo para tu restaurante?' O, dado que el usuario mencionó la garantía, se podría haber profundizado en eso: 'Mencionaste que la garantía es importante. ¿Tienes alguna preferencia sobre la duración o el tipo de cobertura de garantía?'"
+        },
+        "raw_response": "{\n\"contextualidad\": 8,\n\"relevancia\": 9,\n\"naturalidad\": 7,\n\"eficiencia\": 8,\n\"completitud\": 8,\n\"score_total\": 8.0,\n\"comentarios\": \"Las preguntas logran extraer información clave sobre las preferencias del usuario, como el tipo de procesador, el uso principal y la importancia de la garantía. La conversación fluye razonablemente bien, aunque hay cierta redundancia en la pregunta 5 al reiterar información ya conocida.\",\n\"mejores_preguntas\": [\n\"Pregunta 4: Considerando que será para un restaurante de comida rápida, ¿qué otras características son importantes para ti además del procesador J6412? Por ejemplo, ¿necesitas que sea resistente a salpicaduras, fácil de limpiar o que tenga una pantalla táctil específica?\",\n\"Pregunta 3: Para restaurante de comida rápida\"\n],\n\"preguntas_mejorables\": [\n\"Pregunta 5: Considerando que será para un restaurante de comida rápida y que buscas un procesador J6412, ¿hay alguna otra característica que sea crucial para ti, como resistencia a salpicaduras, facilidad de limpieza o alguna especificación de pantalla táctil?\"\n],\n\"sugerencias\": \"La pregunta 5 es un poco redundante ya que reitera información que ya se ha discutido o implícito en la pregunta 4. Se podría haber formulado de manera más directa para obtener nueva información, por ejemplo: 'Además de la resistencia y facilidad de limpieza, ¿hay alguna otra característica específica que busques en la pantalla táctil o en la durabilidad del equipo para tu restaurante?' O, dado que el usuario mencionó la garantía, se podría haber profundizado en eso: 'Mencionaste que la garantía es importante. ¿Tienes alguna preferencia sobre la duración o el tipo de cobertura de garantía?'\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 90.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_19",
+      "scenario_name": "Usuario urgente - Reemplazo de impresora",
+      "timestamp": "2025-11-24T17:49:38.375704",
+      "execution_time": 61.829163,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Entiendo, ¡qué fastidio que se te haya dañado la impresora! Para poder ayudarte a encontrar una nueva lo más rápido posible, ¿podrías contarme un poco sobre qué tipo de cosas sueles imprimir? Por ejemplo, ¿son documentos de texto, fotos, trabajos escolares, o algo más específico?",
+        "Entendido, para tu tienda y para imprimir tickets, ¿tienes alguna idea del presupuesto aproximado que tenías en mente para esta nueva impresora?",
+        "Dado que necesitas imprimir tickets rápidamente (mínimo 200 mm/s) para tu tienda y la impresora actual se dañó, ¿tienes alguna marca de impresora en mente que te haya funcionado bien en el pasado o alguna que prefieras evitar?",
+        "Entendido, necesitas una impresora rápida (mínimo 200 mm/s), con conexión USB y que soporte códigos de barras para tu tienda, y que sea para reemplazar una que se dañó. Para asegurarnos de que encuentres la opción ideal sin salirte de lo planeado, ¿tienes un presupuesto aproximado en mente para esta nueva impresora?"
+      ],
+      "user_responses": [
+        "Se me dañó la impresora y necesito una YA",
+        "Es para mi tienda, imprimo muchos tickets",
+        "Necesito que imprima rápido, mínimo 200 mm/s",
+        "Conexión USB y que soporte códigos de barras",
+        "Algo confiable y disponible, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "impresora",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "imprimir tickets para tienda",
+        "caracteristicas_clave": [
+          "imprima rápido",
+          "mínimo 200 mm/s",
+          "Conexión USB",
+          "soporte códigos de barras",
+          "confiable",
+          "rápida"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": "inmediato",
+        "contexto_adicional": "Se me dañó la impresora. | Se me dañó la impresora. Es para mi tienda, imprimo muchos tickets. | Se me dañó la impresora. Es para mi tienda, imprimo muchos tickets. | Se me dañó la impresora. Es para mi tienda, imprimo muchos tickets. | Se me dañó la impresora. Es para mi tienda, imprimo muchos tickets.",
+        "information_score": 90.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "impresoras",
+          "impresora de tickets",
+          "impresora térmica",
+          "ticket printer"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "tienda, muchos tickets",
+        "caracteristicas_clave": [
+          "200 mm/s",
+          "USB",
+          "códigos de barras",
+          "confiable"
+        ],
+        "nivel_urgencia": "inmediato",
+        "restricciones": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.75,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 0.3333333333333333,
+          "caracteristicas_clave": 0.1111111111111111,
+          "nivel_urgencia": 1.0,
+          "restricciones": 1.0
+        },
+        "average_score": 0.7743055555555555,
+        "accuracy_percentage": 77.43055555555554,
+        "fields_evaluated": 8,
+        "perfect_matches": 5,
+        "partial_matches": 1,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 9,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 9,
+          "score_total": 8.6,
+          "comentarios": "Las preguntas siguen de manera muy efectiva el hilo de la conversación, construyendo sobre las respuestas anteriores del usuario. Se enfocan en obtener información clave para la recomendación de una impresora, como el uso, las características técnicas y el presupuesto. El lenguaje es natural y conversacional, evitando sonar robótico. La eficiencia es alta ya que cada pregunta busca obtener datos específicos y necesarios. La completitud es buena, ya que se están cubriendo aspectos importantes para la elección del producto.",
+          "mejores_preguntas": [
+            "Pregunta 2: Entiendo, ¡qué fastidio que se te haya dañado la impresora! Para poder ayudarte a encontrar una nueva lo más rápido posible, ¿podrías contarme un poco sobre qué tipo de cosas sueles imprimir? Por ejemplo, ¿son documentos de texto, fotos, trabajos escolares, o algo más específico?",
+            "Pregunta 5: Entendido, necesitas una impresora rápida (mínimo 200 mm/s), con conexión USB y que soporte códigos de barras para tu tienda, y que sea para reemplazar una que se dañó. Para asegurarnos de que encuentres la opción ideal sin salirte de lo planeado, ¿tienes un presupuesto aproximado en mente para esta nueva impresora?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?"
+          ],
+          "sugerencias": "La primera pregunta es un poco genérica. Aunque es un buen saludo inicial, podría ser más específica si el sistema ya tuviera alguna información previa sobre el usuario o el contexto general. Sin embargo, dado que es el inicio de la conversación, es aceptable. Las preguntas subsiguientes son muy buenas. Se podría considerar agrupar algunas características en una sola pregunta si se vuelven muy numerosas, pero en este caso, la progresión es lógica y no abrumadora. La pregunta 5 es un excelente ejemplo de resumen y confirmación de información antes de preguntar por el presupuesto."
+        },
+        "raw_response": "{\n    \"contextualidad\": 9,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 9,\n    \"score_total\": 8.6,\n    \"comentarios\": \"Las preguntas siguen de manera muy efectiva el hilo de la conversación, construyendo sobre las respuestas anteriores del usuario. Se enfocan en obtener información clave para la recomendación de una impresora, como el uso, las características técnicas y el presupuesto. El lenguaje es natural y conversacional, evitando sonar robótico. La eficiencia es alta ya que cada pregunta busca obtener datos específicos y necesarios. La completitud es buena, ya que se están cubriendo aspectos importantes para la elección del producto.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 2: Entiendo, ¡qué fastidio que se te haya dañado la impresora! Para poder ayudarte a encontrar una nueva lo más rápido posible, ¿podrías contarme un poco sobre qué tipo de cosas sueles imprimir? Por ejemplo, ¿son documentos de texto, fotos, trabajos escolares, o algo más específico?\",\n        \"Pregunta 5: Entendido, necesitas una impresora rápida (mínimo 200 mm/s), con conexión USB y que soporte códigos de barras para tu tienda, y que sea para reemplazar una que se dañó. Para asegurarnos de que encuentres la opción ideal sin salirte de lo planeado, ¿tienes un presupuesto aproximado en mente para esta nueva impresora?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\"\n    ],\n    \"sugerencias\": \"La primera pregunta es un poco genérica. Aunque es un buen saludo inicial, podría ser más específica si el sistema ya tuviera alguna información previa sobre el usuario o el contexto general. Sin embargo, dado que es el inicio de la conversación, es aceptable. Las preguntas subsiguientes son muy buenas. Se podría considerar agrupar algunas características en una sola pregunta si se vuelven muy numerosas, pero en este caso, la progresión es lógica y no abrumadora. La pregunta 5 es un excelente ejemplo de resumen y confirmación de información antes de preguntar por el presupuesto.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 90.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    },
+    {
+      "scenario_id": "pos_scenario_20",
+      "scenario_name": "Usuario técnico - Lector con certificaciones IP",
+      "timestamp": "2025-11-24T17:52:46.473778",
+      "execution_time": 61.644365,
+      "questions_asked": 5,
+      "questions_list": [
+        "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+        "Para un ambiente industrial, ¿tienes alguna idea del presupuesto aproximado que manejas para este lector de código de barras? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.",
+        "Entendido, buscas un lector de código de barras robusto para un entorno industrial con certificación IP. Para poder recomendarte las mejores opciones, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+        "Considerando que necesitas un lector de código de barras con certificación IP, resistencia al polvo y agua, y que sea capaz de leer códigos 1D y 2D con tecnología imager para un ambiente industrial, ¿tienes alguna marca de preferencia o alguna marca que hayas utilizado anteriormente y te haya dado buenos resultados?",
+        "Considerando que necesitas un lector de código de barras con certificación IP, resistencia al polvo y agua, capaz de leer códigos 1D y 2D con tecnología imager, y que funcione en un amplio rango de temperaturas (-20°C a 60°C) en un ambiente industrial, ¿cuál sería el presupuesto aproximado que tienes en mente para esta inversión?"
+      ],
+      "user_responses": [
+        "Necesito un lector de código de barras para ambiente industrial",
+        "Debe tener certificación IP para resistencia al polvo y agua",
+        "Lectura 1D y 2D, tecnología imager",
+        "Temperatura de funcionamiento amplia, mínimo -20°C a 60°C",
+        "Certificaciones FCC y CE obligatorias, adicionalmente te comento que no tengo presupuesto limitado"
+      ],
+      "extracted_info": {
+        "categoria_producto": "lector de código de barras",
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "ambiente industrial",
+        "caracteristicas_clave": [
+          "certificación IP",
+          "resistencia al polvo",
+          "resistencia al agua",
+          "lectura 1D",
+          "lectura 2D",
+          "tecnología imager",
+          "temperatura de funcionamiento amplia, mínimo -20°C a 60°C",
+          "temperatura de funcionamiento amplia",
+          "mínimo -20°C a 60°C",
+          "certificaciones FCC",
+          "certificaciones CE"
+        ],
+        "preferencias_marca": [],
+        "restricciones": [],
+        "nivel_urgencia": null,
+        "contexto_adicional": null,
+        "information_score": 80.0
+      },
+      "expected_info": {
+        "categoria_producto": [
+          "lectores",
+          "lector de código de barras",
+          "scanner",
+          "barcode reader"
+        ],
+        "presupuesto_min": null,
+        "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
+        "uso_principal": "ambiente industrial",
+        "caracteristicas_clave": [
+          "certificación IP",
+          "1D",
+          "2D",
+          "imager",
+          "-20°C a 60°C",
+          "FCC",
+          "CE"
+        ],
+        "preferencias_marca": []
+      },
+      "extraction_evaluation": {
+        "individual_scores": {
+          "categoria_producto": 0.25,
+          "presupuesto_min": 1.0,
+          "presupuesto_max": 1.0,
+          "sin_limite_presupuesto": 1.0,
+          "uso_principal": 1.0,
+          "caracteristicas_clave": 0.058823529411764705,
+          "preferencias_marca": 1.0
+        },
+        "average_score": 0.7584033613445378,
+        "accuracy_percentage": 75.84033613445378,
+        "fields_evaluated": 7,
+        "perfect_matches": 5,
+        "partial_matches": 0,
+        "mismatches": 2
+      },
+      "questions_evaluation": {
+        "success": true,
+        "evaluation": {
+          "contextualidad": 9,
+          "relevancia": 9,
+          "naturalidad": 8,
+          "eficiencia": 8,
+          "completitud": 9,
+          "score_total": 8.6,
+          "comentarios": "Las preguntas siguen de manera excelente el hilo de la conversación, construyendo sobre la información previamente proporcionada por el usuario. Cada pregunta se enfoca en obtener detalles cruciales para refinar la búsqueda del lector de código de barras industrial. La información extraída refleja una buena comprensión de las necesidades del usuario.",
+          "mejores_preguntas": [
+            "Pregunta 3: Entendido, buscas un lector de código de barras robusto para un entorno industrial con certificación IP. Para poder recomendarte las mejores opciones, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?",
+            "Pregunta 5: Considerando que necesitas un lector de código de barras con certificación IP, resistencia al polvo y agua, capaz de leer códigos 1D y 2D con tecnología imager, y que funcione en un amplio rango de temperaturas (-20°C a 60°C) en un ambiente industrial, ¿cuál sería el presupuesto aproximado que tienes en mente para esta inversión?"
+          ],
+          "preguntas_mejorables": [
+            "Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?",
+            "Pregunta 2: Para un ambiente industrial, ¿tienes alguna idea del presupuesto aproximado que manejas para este lector de código de barras? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas."
+          ],
+          "sugerencias": "La primera pregunta es un saludo genérico y podría ser más directa o integrada con la siguiente. La segunda pregunta introduce el tema del presupuesto demasiado pronto, antes de conocer las características técnicas esenciales, lo cual se corrige en preguntas posteriores. Sería más eficiente preguntar primero por las características clave (como las de la Respuesta 2 y 3) y luego abordar el presupuesto. La pregunta 5 es muy buena porque resume toda la información recopilada, pero podría haber sido formulada de manera ligeramente más concisa. Dado que el usuario indicó que no tiene presupuesto limitado, la pregunta sobre el presupuesto en la Pregunta 5 se vuelve menos crítica, aunque sigue siendo útil para entender expectativas de gama alta."
+        },
+        "raw_response": "{\n    \"contextualidad\": 9,\n    \"relevancia\": 9,\n    \"naturalidad\": 8,\n    \"eficiencia\": 8,\n    \"completitud\": 9,\n    \"score_total\": 8.6,\n    \"comentarios\": \"Las preguntas siguen de manera excelente el hilo de la conversación, construyendo sobre la información previamente proporcionada por el usuario. Cada pregunta se enfoca en obtener detalles cruciales para refinar la búsqueda del lector de código de barras industrial. La información extraída refleja una buena comprensión de las necesidades del usuario.\",\n    \"mejores_preguntas\": [\n        \"Pregunta 3: Entendido, buscas un lector de código de barras robusto para un entorno industrial con certificación IP. Para poder recomendarte las mejores opciones, ¿podrías darme una idea del presupuesto aproximado que tienes en mente?\",\n        \"Pregunta 5: Considerando que necesitas un lector de código de barras con certificación IP, resistencia al polvo y agua, capaz de leer códigos 1D y 2D con tecnología imager, y que funcione en un amplio rango de temperaturas (-20°C a 60°C) en un ambiente industrial, ¿cuál sería el presupuesto aproximado que tienes en mente para esta inversión?\"\n    ],\n    \"preguntas_mejorables\": [\n        \"Pregunta 1: ¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?\",\n        \"Pregunta 2: Para un ambiente industrial, ¿tienes alguna idea del presupuesto aproximado que manejas para este lector de código de barras? Esto me ayudará a enfocar la búsqueda en las opciones más adecuadas.\"\n    ],\n    \"sugerencias\": \"La primera pregunta es un saludo genérico y podría ser más directa o integrada con la siguiente. La segunda pregunta introduce el tema del presupuesto demasiado pronto, antes de conocer las características técnicas esenciales, lo cual se corrige en preguntas posteriores. Sería más eficiente preguntar primero por las características clave (como las de la Respuesta 2 y 3) y luego abordar el presupuesto. La pregunta 5 es muy buena porque resume toda la información recopilada, pero podría haber sido formulada de manera ligeramente más concisa. Dado que el usuario indicó que no tiene presupuesto limitado, la pregunta sobre el presupuesto en la Pregunta 5 se vuelve menos crítica, aunque sigue siendo útil para entender expectativas de gama alta.\"\n}"
+      },
+      "efficiency_score": 1.0,
+      "information_score": 80.0,
+      "thresholds_passed": {
+        "extraction_accuracy": true,
+        "max_questions": true,
+        "information_score": true
+      },
+      "overall_success": true
+    }
+  ]
+}

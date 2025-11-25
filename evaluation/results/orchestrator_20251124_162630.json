@@ -1,0 +1,133 @@
+{
+  "component": "Orchestrator (End-to-End)",
+  "timestamp": "2025-11-24T16:30:44.187298",
+  "total_tests": 1,
+  "successful_tests": 1,
+  "failed_tests": 0,
+  "success_rate": 1.0,
+  "by_difficulty": {
+    "easy": {
+      "total": 1,
+      "passed": 1
+    }
+  },
+  "metrics": {
+    "execution_time": {
+      "avg": 69.64582633972168,
+      "max": 69.64582633972168,
+      "min": 69.64582633972168
+    },
+    "products_found": {
+      "avg": 3.0,
+      "counts": [
+        3
+      ]
+    },
+    "llm_judge_scores": {
+      "avg": 8.6,
+      "all_scores": [
+        8.6
+      ],
+      "count": 1
+    }
+  },
+  "thresholds": {
+    "success_rate": 0.7,
+    "avg_time_max": 120.0,
+    "products_found_min": 1,
+    "llm_quality_min": 6.0
+  },
+  "all_thresholds_passed": {
+    "success_rate": true,
+    "avg_time": true,
+    "avg_products": true,
+    "llm_quality": true
+  },
+  "detailed_results": [
+    {
+      "scenario_id": "pos_scenario_1",
+      "scenario_name": "Usuario básico - AIO para pequeño comercio",
+      "scenario_difficulty": "easy",
+      "timestamp": "2025-11-24T16:30:44.187298",
+      "execution_time": 69.64582633972168,
+      "final_state": "completed",
+      "conversation_log": [
+        {
+          "role": "assistant",
+          "content": "¡Hola! 👋 Estoy aquí para ayudarte a encontrar el producto perfecto. ¿Qué estás buscando hoy?"
+        },
+        {
+          "role": "user",
+          "content": "Necesito un equipo AIO para mi tienda"
+        },
+        {
+          "role": "assistant",
+          "content": "¡Entendido! Para una tienda, el presupuesto es clave para poder recomendarte las mejores opciones. ¿..."
+        },
+        {
+          "role": "user",
+          "content": "Es para punto de venta básico, facturación y control de inventario"
+        },
+        {
+          "role": "assistant",
+          "content": "Dado que el equipo es para punto de venta básico, facturación y control de inventario, ¿hay alguna m..."
+        },
+        {
+          "role": "user",
+          "content": "Que tenga pantalla táctil"
+        },
+        {
+          "role": "assistant",
+          "content": "¡Perfecto! Ya sabemos que buscas un equipo AIO con pantalla táctil para punto de venta, facturación ..."
+        },
+        {
+          "role": "user",
+          "content": "Algo económico pero confiable, no tengo límite de presupuesto"
+        },
+        {
+          "role": "assistant",
+          "content": "\n✨ ¡Análisis completado! He encontrado 3 productos relevantes.\n\n📋 RECOMENDACIONES PERSONALIZADAS:\n\n#..."
+        }
+      ],
+      "workflow_data": {
+        "user_analysis": "Aquí tienes el análisis estructurado de la conversación:\n\n**1. Categoría de producto:**\n*   Equipo AIO (All-In-One)\n\n**2. Presupuesto:**\n*   \"Algo económico pero confiable\"\n*   \"No tengo límite de presupuesto\" (Esta última frase contradice la anterior, indicando que la prioridad es la confiabilidad y que el precio no es el factor limitante principal, sino que se busca una buena relación calidad-precio dentro de lo razonable para un uso profesional).\n\n**3. Características prioritarias:**\n*   Pantalla táctil\n*   Confiable\n\n**4. Uso previsto:**\n*   Punto de venta básico\n*   Facturación\n*   Control de inventario\n\n**5. Preferencias específicas:**\n*   No se mencionan marcas preferidas o a evitar.\n\n**6. Restricciones:**\n*   No se mencionan restricciones explícitas, más allá de la búsqueda de \"algo económico pero confiable\".\n\n**7. Información adicional:**\n*   El usuario busca un equipo para su tienda.\n*   La frase \"no tengo límite de presupuesto\" sugiere que, si bien se busca algo económico, la funcionalidad y la fiabilidad son más importantes que el precio más bajo posible.",
+        "criteria": "¡Excelente! Basándome en la información proporcionada, aquí tienes un análisis detallado y optimizado para la búsqueda de un equipo AIO:\n\n---\n\n### Análisis de Preferencias del Cliente y Recomendaciones de Producto\n\n**1. Criterios de Búsqueda Prioritarios (Ordenados por Importancia):**\n\n1.  **Confiabilidad:** Este es el factor más crítico, ya que el equipo es para un uso profesional y continuo en un punto de venta. La estabilidad y durabilidad son primordiales.\n2.  **Pantalla Táctil:** Es una característica funcional esencial para la operación eficiente en un punto de venta.\n3.  **Relación Calidad-Precio (Buena Calidad a un Precio Razonable):** Aunque se menciona \"no tengo límite de presupuesto\", la frase inicial \"algo económico pero confiable\" indica que se busca un equilibrio. No se trata de comprar lo más barato, sino de invertir en un equipo que ofrezca un buen rendimiento y durabilidad sin un sobreprecio innecesario. Se valora la inversión inteligente.\n4.  **Adecuación para Tareas de Punto de Venta:** El equipo debe ser capaz de manejar eficientemente facturación, control de inventario y operaciones de punto de venta básicas. Esto implica un rendimiento suficiente y compatibilidad con software relevante.\n\n**2. Palabras Clave para Búsqueda en la Base de Datos:**\n\n*   \"AIO punto de venta\"\n*   \"Equipo todo en uno táctil\"\n*   \"Terminal punto de venta AIO\"\n*   \"Sistema POS AIO\"\n*   \"Computadora AIO facturación\"\n*   \"AIO pantalla táctil confiable\"\n*   \"Equipo AIO para tienda\"\n*   \"Sistema de gestión de inventario AIO\"\n*   \"AIO profesional táctil\"\n\n**3. Filtros Específicos:**\n\n*   **Categoría de Producto:**\n    *   Equipos AIO (All-In-One)\n    *   Terminales Punto de Venta (POS)\n    *   Sistemas Integrados de Computación\n\n*   **Características:**\n    *   **Pantalla:** Táctil (obligatorio)\n    *   **Sistema Operativo:** Compatible con software de punto de venta (Windows es lo más común y versátil, pero se podría considerar Linux si el software lo soporta).\n    *   **Procesador:** Mínimo Intel Core i3 o equivalente AMD Ryzen 3 (para asegurar fluidez en tareas de POS). Se puede considerar i5/Ryzen 5 para mayor longevidad y rendimiento.\n    *   **RAM:** Mínimo 8 GB (para multitarea fluida y manejo de inventarios).\n    *   **Almacenamiento:** SSD (obligatorio para velocidad de arranque y carga de aplicaciones). Mínimo 128 GB, preferiblemente 256 GB.\n    *   **Puertos:** Suficientes puertos USB para periféricos (cajón portamonedas, lector de códigos de barras, impresora de tickets), Ethernet.\n    *   **Durabilidad/Construcción:** Buscar equipos diseñados para uso comercial o industrial ligero, que suelen ser más robustos.\n\n*   **Rango de Precio:**\n    *   Dado el matiz \"económico pero confiable\" y \"no tengo límite de presupuesto\", se debe buscar un rango que cubra equipos de gama media-alta para uso profesional. Un rango aproximado podría ser **entre 500€ y 1500€**, permitiendo explorar opciones de alta confiabilidad y rendimiento sin caer en lo excesivamente caro o lo básico. Es importante revisar las especificaciones y la reputación de la marca dentro de este rango.\n\n*   **Marcas (si se llegaran a identificar preferencias o aversiones):**\n    *   Actualmente no hay preferencias o aversiones explícitas. Se debe priorizar la reputación de confiabilidad de la marca en el sector POS.\n\n**4. Factores de Decisión del Usuario (Qué Valora Más):**\n\n*   **Fiabilidad y Durabilidad:** La capacidad del equipo para funcionar sin interrupciones y resistir el uso diario es el factor más importante. Un equipo que falla puede detener las operaciones de la tienda.\n*   **Funcionalidad Táctil:** La interfaz táctil es clave para la eficiencia y la facilidad de uso en un entorno de punto de venta.\n*   **Rendimiento Adecuado:** El equipo debe ser lo suficientemente rápido para ejecutar el software de facturación y control de inventario sin demoras.\n*   **Inversión Inteligente:** El usuario busca un equipo que justifique su costo por su rendimiento, confiabilidad y vida útil, más que por ser la opción más barata. Valora la relación entre el precio pagado y el valor recibido.\n*   **Facilidad de Uso:** Aunque no se menciona explícitamente, para un punto de venta, una interfaz intuitiva y fácil de operar es un plus importante.\n\n---\n\nEste análisis proporciona una base sólida para buscar y recomendar equipos AIO que cumplan con las expectativas del cliente, priorizando la confiabilidad y la funcionalidad para su negocio.",
+        "recommendations_preview": "### 🥇 Recomendación #1: LOGIC CONTROLS7 SB1015W-Q40C0-J\n\n**🎯 ¿Por qué es perfecto para ti?**\nEste equipo AIO ofrece una excelente combinación de características esenciales para tu punto de venta. Su pantalla táctil capacitiva es ideal para una operación fluida y moderna, y la inclusión de múltiples puertos USB 3.0 y seriales asegura la compatibilidad con todos tus periféricos. La larga vida útil de la pantalla y las certificaciones FCC/CE sugieren una buena confiabilidad para uso comercial.\n\n**✨...",
+        "products_found": 3
+      },
+      "evaluations": {
+        "flow_completed": true,
+        "products_found_ok": true,
+        "time_ok": true,
+        "time_acceptable": true,
+        "keyword_relevance": 0.8333333333333334,
+        "recommendations_quality": {
+          "success": true,
+          "evaluation": {
+            "relevancia": 9,
+            "diversidad": 8,
+            "explicacion": 9,
+            "personalizacion": 9,
+            "completitud": 8,
+            "score_total": 8.6,
+            "comentarios": "Las recomendaciones son muy pertinentes al uso descrito (punto de venta) y a las características solicitadas (pantalla táctil, confiabilidad). Se ha interpretado correctamente la ambigüedad del presupuesto, ofreciendo opciones que equilibran costo y calidad. La explicación de cada producto es clara y detalla por qué es adecuado, mencionando pros y contras relevantes.",
+            "areas_mejora": "Aunque se mencionan periféricos como pantalla trasera, VFD y MSR, no se profundiza en si estos son estrictamente necesarios o si su inclusión afecta el precio de forma significativa. La resolución de pantalla se menciona como una consideración, pero podría haberse comparado más explícitamente con las necesidades del usuario.",
+            "sugerencias": "Para mejorar la completitud, se podría haber especificado si los periféricos incluidos (VFD, MSR) son estándar en todos los modelos o si varían. También, se podría haber dado una indicación más clara sobre la resolución de pantalla en relación con la legibilidad del software de punto de venta, o si alguna resolución es preferible para este tipo de uso. Se podría haber añadido una breve mención sobre la importancia de la garantía para la confiabilidad.",
+            "veredicto": "MUY_BUENO"
+          },
+          "raw_response": "```json\n{\n  \"relevancia\": 9,\n  \"diversidad\": 8,\n  \"explicacion\": 9,\n  \"personalizacion\": 9,\n  \"completitud\": 8,\n  \"score_total\": 8.6,\n  \"comentarios\": \"Las recomendaciones son muy pertinentes al uso descrito (punto de venta) y a las características solicitadas (pantalla táctil, confiabilidad). Se ha interpretado correctamente la ambigüedad del presupuesto, ofreciendo opciones que equilibran costo y calidad. La explicación de cada producto es clara y detalla por qué es adecuado, mencionando pros y contras relevantes.\",\n  \"areas_mejora\": \"Aunque se mencionan periféricos como pantalla trasera, VFD y MSR, no se profundiza en si estos son estrictamente necesarios o si su inclusión afecta el precio de forma significativa. La resolución de pantalla se menciona como una consideración, pero podría haberse comparado más explícitamente con las necesidades del usuario.\",\n  \"sugerencias\": \"Para mejorar la completitud, se podría haber especificado si los periféricos incluidos (VFD, MSR) son estándar en todos los modelos o si varían. También, se podría haber dado una indicación más clara sobre la resolución de pantalla en relación con la legibilidad del software de punto de venta, o si alguna resolución es preferible para este tipo de uso. Se podría haber añadido una breve mención sobre la importancia de la garantía para la confiabilidad.\",\n  \"veredicto\": \"MUY_BUENO\"\n}\n```"
+        },
+        "llm_quality_ok": true
+      },
+      "metrics": {
+        "execution_time": 69.64582633972168,
+        "products_found": 3,
+        "conversation_turns": 5,
+        "keyword_matches": 5,
+        "keyword_total": 6,
+        "llm_score": 8.6
+      },
+      "overall_success": true
+    }
+  ]
+}

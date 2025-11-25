@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Evaluación AURA - 2025-11-11 19:04:39</title>
+    <title>Reporte de Evaluación AURA - 2025-11-24 18:22:54</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 2rem;
             color: #1f2937;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -27,28 +27,28 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 2rem;
             text-align: center;
         }
-        
+
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .header .subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
         }
-        
+
         .content {
             padding: 2rem;
         }
-        
+
         .section {
             margin-bottom: 2rem;
             padding: 1.5rem;
@@ -56,20 +56,20 @@
             border-radius: 0.75rem;
             border-left: 4px solid #667eea;
         }
-        
+
         .section h2 {
             color: #667eea;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-        
+
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 1rem;
         }
-        
+
         .metric-card {
             background: white;
             padding: 1.5rem;
@@ -77,37 +77,37 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.2s;
         }
-        
+
         .metric-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
-        
+
         .metric-label {
             font-size: 0.875rem;
             color: #6b7280;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-        
+
         .metric-value {
             font-size: 2rem;
             font-weight: 700;
             color: #1f2937;
         }
-        
+
         .metric-value.success {
             color: #10b981;
         }
-        
+
         .metric-value.warning {
             color: #f59e0b;
         }
-        
+
         .metric-value.error {
             color: #ef4444;
         }
-        
+
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -116,17 +116,17 @@
             overflow: hidden;
             margin-top: 0.5rem;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             transition: width 0.3s;
         }
-        
+
         .test-list {
             list-style: none;
         }
-        
+
         .test-item {
             background: white;
             padding: 1rem;
@@ -137,37 +137,37 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .test-item.pass {
             border-left-color: #10b981;
         }
-        
+
         .test-item.fail {
             border-left-color: #ef4444;
         }
-        
+
         .test-name {
             font-weight: 500;
             flex: 1;
         }
-        
+
         .test-status {
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: 600;
         }
-        
+
         .test-status.pass {
             background: #d1fae5;
             color: #065f46;
         }
-        
+
         .test-status.fail {
             background: #fee2e2;
             color: #991b1b;
         }
-        
+
         .threshold-check {
             display: flex;
             align-items: center;
@@ -176,35 +176,35 @@
             background: white;
             border-radius: 0.5rem;
         }
-        
+
         .threshold-check .icon {
             font-size: 1.5rem;
             margin-right: 0.75rem;
         }
-        
+
         .threshold-check .label {
             flex: 1;
             font-weight: 500;
         }
-        
+
         .summary-box {
             background: white;
             padding: 1.5rem;
             border-radius: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .summary-box h3 {
             color: #667eea;
             margin-bottom: 1rem;
         }
-        
+
         .summary-box p {
             line-height: 1.6;
             color: #4b5563;
             margin-bottom: 0.5rem;
         }
-        
+
         .component-section {
             background: white;
             padding: 1.5rem;
@@ -212,7 +212,7 @@
             margin-bottom: 1rem;
             border: 2px solid #e5e7eb;
         }
-        
+
         .component-section h3 {
             color: #1f2937;
             margin-bottom: 1rem;
@@ -220,7 +220,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .badge {
             display: inline-block;
             padding: 0.25rem 0.75rem;
@@ -228,22 +228,22 @@
             font-size: 0.875rem;
             font-weight: 600;
         }
-        
+
         .badge.success {
             background: #d1fae5;
             color: #065f46;
         }
-        
+
         .badge.warning {
             background: #fef3c7;
             color: #92400e;
         }
-        
+
         .badge.error {
             background: #fee2e2;
             color: #991b1b;
         }
-        
+
         .footer {
             background: #f9fafb;
             padding: 1.5rem;
@@ -252,13 +252,13 @@
             font-size: 0.875rem;
             border-top: 1px solid #e5e7eb;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
         }
-        
+
         th {
             background: #f3f4f6;
             padding: 0.75rem;
@@ -266,16 +266,16 @@
             font-weight: 600;
             color: #374151;
         }
-        
+
         td {
             padding: 0.75rem;
             border-bottom: 1px solid #e5e7eb;
         }
-        
+
         tr:hover {
             background: #f9fafb;
         }
-        
+
         .chart-container {
             margin-top: 1rem;
             padding: 1rem;
@@ -290,15 +290,15 @@
             <h1>🤖 AURA - Reporte de Evaluación</h1>
             <div class="subtitle">Sistema Multi-Agente de Recomendación de Productos</div>
             <div class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">
-                Generado: 2025-11-11 19:04:39
+                Generado: 2025-11-24 18:22:54
             </div>
         </div>
-        
+
         <div class="content">
             
         <div class="section">
             <h2>📊 Resumen Ejecutivo</h2>
-            
+
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Componentes Evaluados</div>
@@ -306,27 +306,27 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tests Totales</div>
-                    <div class="metric-value">24</div>
+                    <div class="metric-value">60</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tests Exitosos</div>
-                    <div class="metric-value success">5</div>
+                    <div class="metric-value success">54</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tasa de Éxito</div>
-                    <div class="metric-value error">20.8%</div>
+                    <div class="metric-value success">90.0%</div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 20.833333333333336%"></div>
+                        <div class="progress-fill" style="width: 90.0%"></div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="summary-box">
-                <h3>Estado General del Sistema: <span class="badge error">NECESITA MEJORAS</span></h3>
+                <h3>Estado General del Sistema: <span class="badge success">EXCELENTE</span></h3>
                 <p>
-                    El sistema AURA ha completado <strong>24 tests de evaluación</strong> 
+                    El sistema AURA ha completado <strong>60 tests de evaluación</strong> 
                     a través de sus 3 componentes principales. 
-                    Se alcanzó una tasa de éxito del <strong>20.8%</strong>.
+                    Se alcanzó una tasa de éxito del <strong>90.0%</strong>.
                 </p>
             </div>
         </div>
@@ -334,26 +334,26 @@
 
         <div class="section">
             <h2>🔍 QuestionerAgent - Recopilación de Información</h2>
-            
+
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Tasa de Éxito</div>
-                    <div class="metric-value warning">12.5%</div>
+                    <div class="metric-value warning">80.0%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Precisión Extracción</div>
-                    <div class="metric-value">77.7%</div>
+                    <div class="metric-value">77.3%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Preguntas Promedio</div>
-                    <div class="metric-value">4.0</div>
+                    <div class="metric-value">5.0</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Score Información</div>
-                    <div class="metric-value">73.8%</div>
+                    <div class="metric-value">77.8%</div>
                 </div>
             </div>
-            
+
             <div class="component-section">
                 <h3>📋 Resultados de Tests</h3>
                 <table>
@@ -368,59 +368,73 @@
                     <tbody>
                         
                 <tr>
-                    <td>Usuario básico - Teléfono económico</td>
-                    <td>100.0%</td>
+                    <td>Usuario básico - AIO para pequeño comercio</td>
+                    <td>81.0%</td>
                     <td>4</td>
                     <td><span class="test-status pass">PASS</span></td>
                 </tr>
             
                 <tr>
-                    <td>Usuario exigente - Laptop para gaming</td>
+                    <td>Usuario exigente - AIO con especificaciones técnicas</td>
+                    <td>69.5%</td>
+                    <td>5</td>
+                    <td><span class="test-status fail">FAIL</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario profesional - AIO para supermercado</td>
+                    <td>79.0%</td>
+                    <td>5</td>
+                    <td><span class="test-status pass">PASS</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario básico - Cajón de dinero estándar</td>
+                    <td>89.3%</td>
+                    <td>5</td>
+                    <td><span class="test-status pass">PASS</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario específico - Cajón con ranura para cheques</td>
+                    <td>77.9%</td>
+                    <td>5</td>
+                    <td><span class="test-status pass">PASS</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario exigente - Cajón de alta resistencia</td>
+                    <td>64.3%</td>
+                    <td>5</td>
+                    <td><span class="test-status fail">FAIL</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario básico - Impresora de tickets</td>
+                    <td>54.8%</td>
+                    <td>5</td>
+                    <td><span class="test-status fail">FAIL</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario específico - Impresora térmica con QR</td>
                     <td>75.0%</td>
-                    <td>4</td>
-                    <td><span class="test-status fail">FAIL</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Usuario profesional - Laptop para desarrollo</td>
-                    <td>66.7%</td>
-                    <td>3</td>
-                    <td><span class="test-status fail">FAIL</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Usuario estudiante - Tablet para estudiar</td>
-                    <td>68.6%</td>
-                    <td>4</td>
-                    <td><span class="test-status fail">FAIL</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Usuario vago - Respuestas ambiguas</td>
-                    <td>100.0%</td>
                     <td>5</td>
-                    <td><span class="test-status fail">FAIL</span></td>
+                    <td><span class="test-status pass">PASS</span></td>
                 </tr>
             
                 <tr>
-                    <td>Usuario específico - Audiófilo</td>
-                    <td>70.8%</td>
-                    <td>4</td>
-                    <td><span class="test-status fail">FAIL</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Usuario urgente - Reemplazo rápido</td>
-                    <td>57.1%</td>
-                    <td>3</td>
-                    <td><span class="test-status fail">FAIL</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Usuario comparativo - Ya investigó</td>
-                    <td>83.3%</td>
+                    <td>Usuario profesional - Impresora con marca de agua</td>
+                    <td>75.0%</td>
                     <td>5</td>
-                    <td><span class="test-status fail">FAIL</span></td>
+                    <td><span class="test-status pass">PASS</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Usuario básico - Impresora de etiquetas</td>
+                    <td>82.1%</td>
+                    <td>5</td>
+                    <td><span class="test-status pass">PASS</span></td>
                 </tr>
             
                     </tbody>
@@ -431,7 +445,7 @@
 
         <div class="section">
             <h2>📚 Sistema RAG - Recuperación de Información</h2>
-            
+
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Estado VectorStore</div>
@@ -439,15 +453,15 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tasa de Éxito</div>
-                    <div class="metric-value warning">50.0%</div>
+                    <div class="metric-value success">95.0%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tiempo Búsqueda</div>
-                    <div class="metric-value">0.022s</div>
+                    <div class="metric-value">0.028s</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Relevancia Promedio</div>
-                    <div class="metric-value">0.46</div>
+                    <div class="metric-value">0.93</div>
                 </div>
             </div>
         </div>
@@ -455,26 +469,26 @@
 
         <div class="section">
             <h2>🎯 Orchestrator - Flujo End-to-End</h2>
-            
+
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Tasa de Éxito</div>
-                    <div class="metric-value warning">0.0%</div>
+                    <div class="metric-value success">95.0%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Tiempo Promedio</div>
-                    <div class="metric-value">57.55s</div>
+                    <div class="metric-value">81.13s</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Productos (Promedio)</div>
-                    <div class="metric-value">3.0</div>
+                    <div class="metric-value">2.9</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Calidad LLM Judge</div>
-                    <div class="metric-value warning">2.0/10</div>
+                    <div class="metric-value warning">6.1/10</div>
                 </div>
             </div>
-            
+
             <div class="component-section">
                 <h3>📊 Rendimiento por Dificultad</h3>
                 <table>
@@ -490,23 +504,23 @@
                         
                 <tr>
                     <td style="text-transform: capitalize;">easy</td>
-                    <td>3</td>
-                    <td>0</td>
-                    <td>0.0%</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td>100.0%</td>
                 </tr>
             
                 <tr>
                     <td style="text-transform: capitalize;">medium</td>
-                    <td>3</td>
-                    <td>0</td>
-                    <td>0.0%</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td>100.0%</td>
                 </tr>
             
                 <tr>
                     <td style="text-transform: capitalize;">hard</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0.0%</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td>83.3%</td>
                 </tr>
             
                     </tbody>
@@ -515,7 +529,7 @@
         </div>
         
         </div>
-        
+
         <div class="footer">
             <p>🚀 AURA Evaluation System</p>
             <p>Powered by Google Gemini, LangChain & LangGraph</p>

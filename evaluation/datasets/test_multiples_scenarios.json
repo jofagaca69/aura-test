@@ -6,16 +6,17 @@
       "category": "aio",
       "difficulty": "easy",
       "conversation": [
-        "Necesito un equipo todo en uno para mi tienda",
+        "Necesito un equipo AIO para mi tienda",
         "Es para punto de venta básico, facturación y control de inventario",
         "Que tenga pantalla táctil",
-        "Algo económico pero confiable",
+        "Algo económico pero confiable, no tengo límite de presupuesto",
         "No tengo preferencia de marca"
       ],
       "expected_extraction": {
-        "categoria_producto": "aio",
+        "categoria_producto": ["aio", "equipo aio", "equipo all-in-one"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "punto de venta, facturación, control de inventario",
         "caracteristicas_clave": ["pantalla táctil"],
         "preferencias_marca": []
@@ -24,7 +25,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["aio", "pantalla táctil", "punto de venta", "básico"]
+        "relevance_keywords": ["aio", "all-in-one", "pantalla táctil", "punto de venta", "básico", "táctil"]
       }
     },
     {
@@ -40,9 +41,10 @@
         "Prefiero marcas como 3NSTAR o SAT PCS"
       ],
       "expected_extraction": {
-        "categoria_producto": "aio",
+        "categoria_producto": ["aio", "equipo aio", "equipo all-in-one"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "restaurante",
         "caracteristicas_clave": ["8GB RAM", "procesador J6412", "pantalla 15 pulgadas", "táctil capacitiva multitoque", "USB 3.0", "inalámbrico"],
         "preferencias_marca": ["3NSTAR", "SAT PCS"]
@@ -51,7 +53,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["J6412", "8GB RAM", "multitoque", "capacitivo"]
+        "relevance_keywords": ["J6412", "8GB", "RAM", "multitoque", "capacitivo", "USB 3.0", "inalámbrico"]
       }
     },
     {
@@ -64,12 +66,13 @@
         "Mínimo 4GB RAM, SSD de 128GB, pantalla táctil resistiva o capacitiva",
         "Necesito que tenga VFD, MSR y pantalla trasera para cliente",
         "Que soporte VESA para montaje",
-        "Certificaciones FCC y CE son obligatorias"
+        "Certificaciones FCC y CE son obligatoriasm, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "aio",
+        "categoria_producto": ["aio", "equipo aio", "equipo all-in-one"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "supermercado, cajas",
         "caracteristicas_clave": ["4GB RAM", "SSD 128GB", "pantalla táctil", "VFD", "MSR", "pantalla trasera", "VESA", "certificaciones FCC CE"],
         "preferencias_marca": []
@@ -78,7 +81,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["VFD", "MSR", "pantalla trasera", "VESA", "certificaciones"]
+        "relevance_keywords": ["VFD", "MSR", "pantalla trasera", "display", "VESA", "certificaciones", "FCC", "CE", "supermercado"]
       }
     },
     {
@@ -90,21 +93,24 @@
         "Necesito un cajón de dinero",
         "Para mi tienda pequeña",
         "Que sea fácil de usar",
-        "Algo básico y económico"
+        "Algo básico y económico",
+        "Tengo presupuesto de hasta $100 USD",
+        "Espero tu recomendación, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "cajones",
+        "categoria_producto": ["cajones", "cajón de dinero", "cajon portamonedas", "cash drawer"],
         "presupuesto_min": null,
-        "presupuesto_max": null,
+        "presupuesto_max": 100,
+        "sin_limite_presupuesto": false,
         "uso_principal": "tienda pequeña",
-        "caracteristicas_clave": [],
+        "caracteristicas_clave": ["fácil de usar", "básico", "económico"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
-        "max_questions": 5,
-        "relevance_keywords": ["cajón", "dinero", "básico"]
+        "max_questions": 6,
+        "relevance_keywords": ["cajón", "dinero", "cash drawer", "básico", "económico", "tienda"]
       }
     },
     {
@@ -117,12 +123,13 @@
         "Necesito que tenga ranura para cheques",
         "Mínimo 5 compartimientos para billetes y 8 para monedas",
         "Que sea de metal y tenga apertura de seguridad",
-        "Conexión por RJ11"
+        "Conexión por RJ11, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "cajones",
+        "categoria_producto": ["cajones", "cajón de dinero", "cajon portamonedas", "cash drawer"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "restaurante",
         "caracteristicas_clave": ["ranura para cheques", "5 compartimientos billetes", "8 compartimientos monedas", "metal", "apertura de seguridad", "RJ11"],
         "preferencias_marca": []
@@ -131,7 +138,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["cheques", "compartimientos", "metal", "seguridad"]
+        "relevance_keywords": ["cheques", "compartimientos", "metal", "seguridad", "RJ11", "billetes", "monedas"]
       }
     },
     {
@@ -144,21 +151,22 @@
         "Para uso intensivo en supermercado",
         "Mínimo 2 millones de ciclos",
         "Riel metálico de balineras",
-        "Que tenga compartimiento de billetes removible como caja de seguridad"
+        "Que tenga compartimiento de billetes removible como caja de seguridad, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "cajones",
+        "categoria_producto": ["cajones", "cajón de dinero", "cajon portamonedas", "cash drawer"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "supermercado, uso intensivo",
-        "caracteristicas_clave": ["2 millones de ciclos", "riel metálico balineras", "compartimiento billetes removible", "caja de seguridad"],
+        "caracteristicas_clave": ["2 millones de ciclos", "riel metálico balineras", "compartimiento billetes removible", "caja de seguridad", "alta resistencia"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["alta resistencia", "millones de ciclos", "riel metálico", "caja de seguridad"]
+        "relevance_keywords": ["alta resistencia", "millones", "ciclos", "durabilidad", "riel", "balineras", "removible", "seguridad"]
       }
     },
     {
@@ -168,23 +176,26 @@
       "difficulty": "easy",
       "conversation": [
         "Necesito una impresora de tickets",
-        "Para mi tienda",
+        "Para mi tienda de ropa",
         "Que imprima códigos de barras",
-        "Algo básico y económico"
+        "Algo básico y económico",
+        "Con conexión USB",
+        "Presupuesto máximo de $150 USD"
       ],
       "expected_extraction": {
-        "categoria_producto": "impresoras",
+        "categoria_producto": ["impresoras", "impresora de tickets", "impresora térmica", "ticket printer"],
         "presupuesto_min": null,
-        "presupuesto_max": null,
-        "uso_principal": "tienda",
-        "caracteristicas_clave": ["códigos de barras"],
+        "presupuesto_max": 150,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "tienda, impresión de tickets",
+        "caracteristicas_clave": ["códigos de barras", "USB", "básico", "económico"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
-        "max_questions": 5,
-        "relevance_keywords": ["impresora", "tickets", "códigos de barras"]
+        "max_questions": 6,
+        "relevance_keywords": ["impresora", "tickets", "térmica", "códigos de barras", "USB", "básico"]
       }
     },
     {
@@ -197,12 +208,13 @@
         "Necesito que imprima códigos QR y PDF417",
         "Velocidad mínima de 200 mm/s",
         "Resolución de 203 DPI",
-        "Que tenga conexión USB y Ethernet"
+        "Que tenga conexión USB y Ethernet, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "impresoras",
+        "categoria_producto": ["impresoras", "impresora térmica", "impresora de tickets", "thermal printer"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "restaurante",
         "caracteristicas_clave": ["códigos QR", "PDF417", "200 mm/s", "203 DPI", "USB", "Ethernet"],
         "preferencias_marca": []
@@ -211,7 +223,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["QR", "PDF417", "térmica", "velocidad"]
+        "relevance_keywords": ["QR", "PDF417", "térmica", "velocidad", "200", "mm/s", "DPI", "Ethernet"]
       }
     },
     {
@@ -224,22 +236,22 @@
         "Debe tener impresión de marca de agua",
         "Soporte para códigos 1D y 2D completos",
         "Velocidad de 250 mm/s o superior",
-        "Resolución 203 DPI, ancho de papel 80mm",
-        "Conexión USB, Serial y Ethernet"
+        "Resolución 203 DPI, ancho de papel 80mm, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "impresoras",
+        "categoria_producto": ["impresoras", "impresora térmica", "impresora de tickets", "thermal printer"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "farmacia",
-        "caracteristicas_clave": ["marca de agua", "códigos 1D", "códigos 2D", "250 mm/s", "203 DPI", "80mm", "USB", "Serial", "Ethernet"],
+        "caracteristicas_clave": ["marca de agua", "códigos 1D", "códigos 2D", "250 mm/s", "203 DPI", "80mm"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["marca de agua", "farmacia", "códigos 2D", "alta velocidad"]
+        "relevance_keywords": ["marca de agua", "watermark", "farmacia", "códigos 2D", "1D", "alta velocidad", "250"]
       }
     },
     {
@@ -249,22 +261,25 @@
       "difficulty": "easy",
       "conversation": [
         "Necesito una impresora de etiquetas",
-        "Para imprimir etiquetas de productos",
-        "Algo básico y fácil de usar"
+        "Para imprimir etiquetas de productos en mi tienda de abarrotes",
+        "Algo básico y fácil de usar",
+        "Con conexión USB",
+        "Presupuesto de hasta $200 USD"
       ],
       "expected_extraction": {
-        "categoria_producto": "etiquetas",
+        "categoria_producto": ["etiquetas", "impresora de etiquetas", "label printer", "impresora etiquetas"],
         "presupuesto_min": null,
-        "presupuesto_max": null,
-        "uso_principal": "etiquetas de productos",
-        "caracteristicas_clave": [],
+        "presupuesto_max": 200,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "etiquetas de productos, tienda",
+        "caracteristicas_clave": ["básico", "fácil de usar", "USB"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["impresora", "etiquetas"]
+        "relevance_keywords": ["impresora", "etiquetas", "labels", "productos", "básico", "USB"]
       }
     },
     {
@@ -277,22 +292,22 @@
         "Necesito impresión térmica directa y por transferencia",
         "Velocidad de al menos 5 IPS",
         "Resolución 203 DPI",
-        "Ancho de impresión de 104mm",
-        "Que tenga auto cortador"
+        "Ancho de impresión de 104mm, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "etiquetas",
+        "categoria_producto": ["etiquetas", "impresora de etiquetas", "label printer", "impresora etiquetas"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "almacén",
-        "caracteristicas_clave": ["térmica directa", "transferencia térmica", "5 IPS", "203 DPI", "104mm", "auto cortador"],
+        "caracteristicas_clave": ["térmica directa", "transferencia térmica", "5 IPS", "203 DPI", "104mm"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["térmica", "transferencia", "auto cortador", "almacén"]
+        "relevance_keywords": ["térmica", "transferencia", "IPS", "velocidad", "104mm", "almacén", "etiquetas"]
       }
     },
     {
@@ -302,22 +317,25 @@
       "difficulty": "easy",
       "conversation": [
         "Necesito un lector de código de barras",
-        "Para escanear productos en mi tienda",
-        "Algo básico y económico"
+        "Para escanear productos en mi tienda de conveniencia",
+        "Algo básico y económico",
+        "Con conexión USB",
+        "Presupuesto máximo de $80 USD"
       ],
       "expected_extraction": {
-        "categoria_producto": "lectores",
+        "categoria_producto": ["lectores", "lector de código de barras", "scanner", "barcode reader"],
         "presupuesto_min": null,
-        "presupuesto_max": null,
-        "uso_principal": "escanear productos",
-        "caracteristicas_clave": [],
+        "presupuesto_max": 80,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "escanear productos, tienda",
+        "caracteristicas_clave": ["básico", "económico", "USB"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["lector", "código de barras", "escanear"]
+        "relevance_keywords": ["lector", "código de barras", "scanner", "escanear", "USB", "básico"]
       }
     },
     {
@@ -330,12 +348,13 @@
         "Para supermercado",
         "Que lea códigos 1D como EAN-13, UPC, CODE128",
         "Modo manual y continuo",
-        "Conexión USB"
+        "Conexión USB, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "lectores",
+        "categoria_producto": ["lectores", "lector de código de barras", "scanner", "barcode reader"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "supermercado",
         "caracteristicas_clave": ["láser", "1D", "EAN-13", "UPC", "CODE128", "manual", "continuo", "USB"],
         "preferencias_marca": []
@@ -344,7 +363,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["láser", "1D", "EAN-13", "UPC"]
+        "relevance_keywords": ["láser", "1D", "EAN-13", "UPC", "CODE128", "supermercado", "manual"]
       }
     },
     {
@@ -357,22 +376,22 @@
         "Para farmacia, necesito leer QR codes y DataMatrix",
         "Tecnología de imager de área",
         "Resolución mínima de 1280 x 960 píxeles",
-        "Batería de al menos 7 horas",
-        "Que lea códigos 1D y 2D completos"
+        "Batería de al menos 7 horas, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "lectores",
+        "categoria_producto": ["lectores", "lector de código de barras", "scanner", "barcode reader"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "farmacia",
-        "caracteristicas_clave": ["2D", "inalámbrico", "QR codes", "DataMatrix", "imager de área", "1280 x 960", "7 horas batería", "1D", "2D"],
+        "caracteristicas_clave": ["2D", "inalámbrico", "QR codes", "DataMatrix", "imager de área", "1280 x 960", "7 horas batería"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["2D", "inalámbrico", "QR", "DataMatrix", "imager"]
+        "relevance_keywords": ["2D", "inalámbrico", "QR", "DataMatrix", "imager", "batería", "farmacia"]
       }
     },
     {
@@ -382,22 +401,25 @@
       "difficulty": "easy",
       "conversation": [
         "Necesito un monitor táctil",
-        "Para punto de venta",
-        "Que sea táctil y fácil de usar"
+        "Para punto de venta en mi cafetería",
+        "Que sea táctil y fácil de usar",
+        "De tamaño entre 15 y 17 pulgadas",
+        "Presupuesto de hasta $300 USD"
       ],
       "expected_extraction": {
-        "categoria_producto": "monitores",
+        "categoria_producto": ["monitores", "monitor táctil", "touchscreen", "pantalla táctil"],
         "presupuesto_min": null,
-        "presupuesto_max": null,
-        "uso_principal": "punto de venta",
-        "caracteristicas_clave": ["táctil"],
+        "presupuesto_max": 300,
+        "sin_limite_presupuesto": false,
+        "uso_principal": "punto de venta, cafetería",
+        "caracteristicas_clave": ["táctil", "15-17 pulgadas"],
         "preferencias_marca": []
       },
       "expected_outcome": {
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["monitor", "táctil", "punto de venta"]
+        "relevance_keywords": ["monitor", "táctil", "touchscreen", "punto de venta", "POS", "15", "17"]
       }
     },
     {
@@ -410,12 +432,13 @@
         "Tecnología capacitiva con multitoque",
         "Resolución 1024 x 768",
         "Que tenga montaje VESA 75mm x 75mm",
-        "Brillo mínimo de 300 nits"
+        "Brillo mínimo de 300 nits, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "monitores",
+        "categoria_producto": ["monitores", "monitor táctil", "touchscreen", "pantalla táctil"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": null,
         "caracteristicas_clave": ["15 pulgadas", "capacitivo", "multitoque", "1024 x 768", "VESA 75mm", "300 nits"],
         "preferencias_marca": []
@@ -424,7 +447,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["capacitivo", "multitoque", "VESA", "brillo"]
+        "relevance_keywords": ["capacitivo", "multitoque", "VESA", "brillo", "nits", "15", "1024x768"]
       }
     },
     {
@@ -436,12 +459,13 @@
         "Necesito algo para mi negocio",
         "No sé qué necesito exactamente",
         "Algo que funcione bien",
-        "Sin preferencias específicas"
+        "Sin preferencias específicas, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
         "categoria_producto": null,
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "negocio",
         "caracteristicas_clave": [],
         "preferencias_marca": []
@@ -464,12 +488,13 @@
         "Necesito uno con procesador J6412",
         "Para restaurante de comida rápida",
         "¿Cuál me recomiendas?",
-        "Que tenga buena garantía"
+        "Que tenga buena garantía, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "aio",
+        "categoria_producto": ["aio", "equipo aio", "equipo all-in-one"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "restaurante comida rápida",
         "caracteristicas_clave": ["procesador J6412", "buena garantía"],
         "preferencias_marca": ["3NSTAR", "SAT PCS"],
@@ -479,7 +504,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["3NSTAR", "SAT PCS", "J6412", "restaurante"]
+        "relevance_keywords": ["3NSTAR", "SAT PCS", "J6412", "restaurante", "garantía", "comida rápida"]
       }
     },
     {
@@ -492,14 +517,15 @@
         "Es para mi tienda, imprimo muchos tickets",
         "Necesito que imprima rápido, mínimo 200 mm/s",
         "Conexión USB y que soporte códigos de barras",
-        "Algo confiable y disponible"
+        "Algo confiable y disponible, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "impresoras",
+        "categoria_producto": ["impresoras", "impresora de tickets", "impresora térmica", "ticket printer"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "tienda, muchos tickets",
-        "caracteristicas_clave": ["200 mm/s", "USB", "códigos de barras"],
+        "caracteristicas_clave": ["200 mm/s", "USB", "códigos de barras", "confiable"],
         "nivel_urgencia": "inmediato",
         "restricciones": []
       },
@@ -507,7 +533,7 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["velocidad", "tickets", "urgente", "confiable"]
+        "relevance_keywords": ["velocidad", "tickets", "urgente", "confiable", "200", "mm/s", "USB"]
       }
     },
     {
@@ -520,12 +546,13 @@
         "Debe tener certificación IP para resistencia al polvo y agua",
         "Lectura 1D y 2D, tecnología imager",
         "Temperatura de funcionamiento amplia, mínimo -20°C a 60°C",
-        "Certificaciones FCC y CE obligatorias"
+        "Certificaciones FCC y CE obligatorias, adicionalmente te comento que no tengo presupuesto limitado"
       ],
       "expected_extraction": {
-        "categoria_producto": "lectores",
+        "categoria_producto": ["lectores", "lector de código de barras", "scanner", "barcode reader"],
         "presupuesto_min": null,
         "presupuesto_max": null,
+        "sin_limite_presupuesto": true,
         "uso_principal": "ambiente industrial",
         "caracteristicas_clave": ["certificación IP", "1D", "2D", "imager", "-20°C a 60°C", "FCC", "CE"],
         "preferencias_marca": []
@@ -534,9 +561,8 @@
         "should_find_products": true,
         "min_products": 1,
         "max_questions": 5,
-        "relevance_keywords": ["IP", "industrial", "temperatura", "certificaciones"]
+        "relevance_keywords": ["IP", "industrial", "temperatura", "certificaciones", "FCC", "CE", "imager", "resistencia"]
       }
     }
   ]
 }
-

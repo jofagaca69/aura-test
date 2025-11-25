@@ -107,7 +107,7 @@ class InformationCollectorAgent(BaseAgent):
             for i, resp in enumerate(responses)
         ])
         
-        result = chain.invoke({"responses": responses_text})
+        result = self._invoke_with_rate_limit(chain, {"responses": responses_text})
         
         # Guardar en memoria
         self.update_memory("raw_responses", responses)

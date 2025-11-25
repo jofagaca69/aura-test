@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Evaluación AURA - 2025-11-24 16:30:44</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .metric-value.success {
+            color: #10b981;
+        }
+
+        .metric-value.warning {
+            color: #f59e0b;
+        }
+
+        .metric-value.error {
+            color: #ef4444;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .test-list {
+            list-style: none;
+        }
+
+        .test-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-item.pass {
+            border-left-color: #10b981;
+        }
+
+        .test-item.fail {
+            border-left-color: #ef4444;
+        }
+
+        .test-name {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .test-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .test-status.pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .test-status.fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .threshold-check {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 0.5rem;
+        }
+
+        .threshold-check .icon {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+
+        .threshold-check .label {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .summary-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .summary-box h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .summary-box p {
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .component-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e5e7eb;
+        }
+
+        .component-section h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .badge.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 1.5rem;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th {
+            background: #f3f4f6;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .chart-container {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AURA - Reporte de Evaluación</h1>
+            <div class="subtitle">Sistema Multi-Agente de Recomendación de Productos</div>
+            <div class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Generado: 2025-11-24 16:30:44
+            </div>
+        </div>
+
+        <div class="content">
+            
+        <div class="section">
+            <h2>📊 Resumen Ejecutivo</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Componentes Evaluados</div>
+                    <div class="metric-value">3</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tests Totales</div>
+                    <div class="metric-value">3</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tests Exitosos</div>
+                    <div class="metric-value success">3</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tasa de Éxito</div>
+                    <div class="metric-value success">100.0%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100.0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <h3>Estado General del Sistema: <span class="badge success">EXCELENTE</span></h3>
+                <p>
+                    El sistema AURA ha completado <strong>3 tests de evaluación</strong> 
+                    a través de sus 3 componentes principales. 
+                    Se alcanzó una tasa de éxito del <strong>100.0%</strong>.
+                </p>
+            </div>
+        </div>
+        
+
+        <div class="section">
+            <h2>🔍 QuestionerAgent - Recopilación de Información</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Tasa de Éxito</div>
+                    <div class="metric-value success">100.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Precisión Extracción</div>
+                    <div class="metric-value">81.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Preguntas Promedio</div>
+                    <div class="metric-value">4.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Score Información</div>
+                    <div class="metric-value">80.0%</div>
+                </div>
+            </div>
+
+            <div class="component-section">
+                <h3>📋 Resultados de Tests</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Escenario</th>
+                            <th>Precisión</th>
+                            <th>Preguntas</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td>Usuario básico - AIO para pequeño comercio</td>
+                    <td>81.0%</td>
+                    <td>4</td>
+                    <td><span class="test-status pass">PASS</span></td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <div class="section">
+            <h2>📚 Sistema RAG - Recuperación de Información</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Estado VectorStore</div>
+                    <div class="metric-value success">HEALTHY</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tasa de Éxito</div>
+                    <div class="metric-value success">100.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tiempo Búsqueda</div>
+                    <div class="metric-value">0.031s</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Relevancia Promedio</div>
+                    <div class="metric-value">1.00</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="section">
+            <h2>🎯 Orchestrator - Flujo End-to-End</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Tasa de Éxito</div>
+                    <div class="metric-value success">100.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tiempo Promedio</div>
+                    <div class="metric-value">69.65s</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Productos (Promedio)</div>
+                    <div class="metric-value">3.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Calidad LLM Judge</div>
+                    <div class="metric-value success">8.6/10</div>
+                </div>
+            </div>
+
+            <div class="component-section">
+                <h3>📊 Rendimiento por Dificultad</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dificultad</th>
+                            <th>Total Tests</th>
+                            <th>Exitosos</th>
+                            <th>Tasa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="text-transform: capitalize;">easy</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>100.0%</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        </div>
+
+        <div class="footer">
+            <p>🚀 AURA Evaluation System</p>
+            <p>Powered by Google Gemini, LangChain & LangGraph</p>
+            <p style="margin-top: 0.5rem;">© 2025 José Fabián García Camargo</p>
+        </div>
+    </div>
+</body>
+</html>
+        

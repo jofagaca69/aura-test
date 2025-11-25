@@ -171,7 +171,7 @@ Por favor, genera tus recomendaciones personalizadas usando ÚNICAMENTE los prod
         
         chain = prompt | self.llm
         
-        result = chain.invoke({
+        result = self._invoke_with_rate_limit(chain, {
             "user_analysis": user_analysis,
             "criteria": criteria,
             "products_context": products_context,
@@ -210,7 +210,7 @@ Por favor, genera tus recomendaciones personalizadas usando ÚNICAMENTE los prod
         ])
         
         chain = prompt | self.llm
-        result = chain.invoke({"products": "\n\n---\n\n".join(comparisons)})
+        result = self._invoke_with_rate_limit(chain, {"products": "\n\n---\n\n".join(comparisons)})
         
         return result.content
 

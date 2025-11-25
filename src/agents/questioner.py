@@ -15,6 +15,7 @@ class ExtractedInfo(BaseModel):
     categoria_producto: Optional[str] = Field(default=None, description="Tipo de producto buscado")
     presupuesto_min: Optional[float] = Field(default=None, description="Presupuesto mínimo")
     presupuesto_max: Optional[float] = Field(default=None, description="Presupuesto máximo")
+    sin_limite_presupuesto: bool = Field(default=False, description="Si el usuario no tiene límite de presupuesto")
     uso_principal: Optional[str] = Field(default=None, description="Uso principal del producto")
     caracteristicas_clave: List[str] = Field(default_factory=list, description="Características importantes")
     preferencias_marca: List[str] = Field(default_factory=list, description="Marcas preferidas")
@@ -64,17 +65,30 @@ class QuestionerAgent(BaseAgent):
             1. **categoria_producto**: Tipo de producto (laptop, teléfono, tablet, etc.) - STRING o null
             2. **presupuesto_min**: Presupuesto mínimo en números - FLOAT o null
             3. **presupuesto_max**: Presupuesto máximo en números - FLOAT o null
-            4. **uso_principal**: Uso principal del producto - STRING o null
-            5. **caracteristicas_clave**: Lista de características importantes - LIST[STRING]
-            6. **preferencias_marca**: Marcas mencionadas o preferidas - LIST[STRING]
-            7. **restricciones**: Limitaciones o restricciones - LIST[STRING]
-            8. **nivel_urgencia**: ¿Qué tan urgente? (inmediato/pronto/sin_prisa) - STRING o null
-            9. **contexto_adicional**: Cualquier otra información relevante - STRING o null
+            4. **sin_limite_presupuesto**: Si el usuario indica que NO tiene límite de presupuesto - BOOLEAN (true/false)
+               - ⚠️ CRÍTICO: SIEMPRE debes evaluar este campo. Si no hay información, usa false.
+               - Detecta frases como: "no tengo límite", "sin límite de presupuesto", "presupuesto ilimitado", 
+                 "no hay límite", "dinero no es problema", "presupuesto flexible", "no tengo límite de presupuesto",
+                 "presupuesto no es problema", "cualquier precio", "sin restricción de precio", etc.
+               - Si el usuario dice explícitamente que NO tiene límite → true
+               - Si el usuario menciona un presupuesto específico → false
+               - Si no hay información sobre presupuesto → false
+               - Si es true, entonces presupuesto_min y presupuesto_max deben ser null
+            5. **uso_principal**: Uso principal del producto - STRING o null
+            6. **caracteristicas_clave**: Lista de características importantes - LIST[STRING]
+            7. **preferencias_marca**: Marcas mencionadas o preferidas - LIST[STRING]
+            8. **restricciones**: Limitaciones o restricciones - LIST[STRING]
+            9. **nivel_urgencia**: ¿Qué tan urgente? (inmediato/pronto/sin_prisa) - STRING o null
+            10. **contexto_adicional**: Cualquier otra información relevante - STRING o null
             
             🎯 INSTRUCCIONES:
             - Extrae SOLO información EXPLÍCITA o CLARAMENTE IMPLÍCITA
             - Si no hay información sobre un campo, usa null o lista vacía []
             - Para presupuestos, convierte texto a números (ej: "mil euros" → 1000.0)
+            - ⚠️ IMPORTANTE: El campo "sin_limite_presupuesto" SIEMPRE debe estar presente en el JSON (true o false)
+            - Si el usuario menciona "no tengo límite" o similar → sin_limite_presupuesto: true
+            - Si el usuario menciona un presupuesto específico → sin_limite_presupuesto: false
+            - Si no hay información sobre presupuesto → sin_limite_presupuesto: false
             - Sé conservador: mejor null que información incorrecta
             
             📝 INFORMACIÓN YA RECOPILADA:
@@ -84,10 +98,12 @@ class QuestionerAgent(BaseAgent):
             "{user_response}"
             
             🎯 RESPONDE EN FORMATO JSON VÁLIDO (sin markdown, sin comentarios):
+            ⚠️ IMPORTANTE: Todos los campos deben estar presentes en el JSON, incluso si son null o false.
             {{
                 "categoria_producto": "valor o null",
                 "presupuesto_min": número o null,
                 "presupuesto_max": número o null,
+                "sin_limite_presupuesto": true o false,  // ⚠️ SIEMPRE incluir este campo (true si no hay límite, false en caso contrario)
                 "uso_principal": "valor o null",
                 "caracteristicas_clave": ["lista", "de", "características"],
                 "preferencias_marca": ["lista", "de", "marcas"],
@@ -165,7 +181,7 @@ class QuestionerAgent(BaseAgent):
             
             **INFORMACIÓN CRÍTICA** (debe estar presente):
             - ✓ Categoría de producto (qué busca)
-            - ✓ Presupuesto aproximado (rango de precio)
+            - ✓ Presupuesto aproximado (rango de precio) O indicación de sin límite de presupuesto
             - ✓ Uso principal O características clave
             
             **INFORMACIÓN ÚTIL** (deseable pero no esencial):
@@ -175,13 +191,13 @@ class QuestionerAgent(BaseAgent):
             - Contexto adicional
             
             ✅ TENEMOS SUFICIENTE SI:
-            - Categoría + Presupuesto + (Uso O Características) están presentes
+            - Categoría + (Presupuesto O Sin límite de presupuesto) + (Uso O Características) están presentes
             - La información es lo suficientemente específica para recomendar
             - Tenemos al menos 2 de los 3 elementos críticos con buen detalle
             
             ⚠️ NECESITAMOS MÁS SI:
             - Falta categoría de producto (crítico)
-            - No sabemos el presupuesto ni aproximado (crítico)
+            - No sabemos el presupuesto ni aproximado ni si no hay límite (crítico)
             - No tenemos idea del uso ni características deseadas
             - La información es muy vaga o ambigua
             
@@ -242,7 +258,7 @@ class QuestionerAgent(BaseAgent):
         if self.conversation_context.current_question_number == 0:
             try:
                 chain = self.initial_question_prompt | self.llm
-                result = chain.invoke({})
+                result = self._invoke_with_rate_limit(chain, {})
                 question = result.content.strip()
                 
                 self.conversation_context.current_question_number += 1
@@ -270,7 +286,7 @@ class QuestionerAgent(BaseAgent):
         # Generar siguiente pregunta personalizada con Gemini usando contexto completo
         try:
             chain = self.question_prompt | self.llm
-            result = chain.invoke({
+            result = self._invoke_with_rate_limit(chain, {
                 "extracted_info_summary": extracted_info_summary,
                 "missing_info": missing_info,
                 "conversation_history": conversation_history
@@ -329,7 +345,7 @@ class QuestionerAgent(BaseAgent):
         
         try:
             chain = self.analysis_prompt | self.llm
-            result = chain.invoke({
+            result = self._invoke_with_rate_limit(chain, {
                 "conversation_history": conversation_history,
                 "extracted_info_summary": extracted_info_summary,
                 "information_score": info_score,
@@ -389,7 +405,7 @@ class QuestionerAgent(BaseAgent):
             
             # Usar Gemini para extraer información estructurada
             chain = self.extraction_prompt | self.llm
-            result = chain.invoke({
+            result = self._invoke_with_rate_limit(chain, {
                 "user_response": response,
                 "previous_info": previous_info
             })
@@ -418,6 +434,16 @@ class QuestionerAgent(BaseAgent):
             if extracted_data.get("presupuesto_max") is not None:
                 info.presupuesto_max = float(extracted_data["presupuesto_max"])
             
+            # Procesar sin_limite_presupuesto
+            # IMPORTANTE: Siempre actualizar si el LLM detecta este campo (incluso si es false)
+            # Esto asegura que se capture correctamente cuando el usuario dice "no tengo límite"
+            if "sin_limite_presupuesto" in extracted_data:
+                info.sin_limite_presupuesto = bool(extracted_data["sin_limite_presupuesto"])
+                # Si el usuario dice que no tiene límite, asegurar que presupuesto_min/max sean None
+                if info.sin_limite_presupuesto:
+                    info.presupuesto_min = None
+                    info.presupuesto_max = None
+                
             if extracted_data.get("uso_principal"):
                 info.uso_principal = extracted_data["uso_principal"]
             
@@ -466,7 +492,9 @@ class QuestionerAgent(BaseAgent):
         if info.categoria_producto:
             score += 25
         
-        if info.presupuesto_min or info.presupuesto_max:
+        # Presupuesto: puede ser específico o sin límite
+        # IMPORTANTE: Si sin_limite_presupuesto es True, también cuenta como información de presupuesto
+        if info.sin_limite_presupuesto or info.presupuesto_min or info.presupuesto_max:
             score += 25
         
         if info.uso_principal or len(info.caracteristicas_clave) > 0:
@@ -506,7 +534,9 @@ class QuestionerAgent(BaseAgent):
         
         lines.append(f"🏷️  Categoría: {info.categoria_producto or '❌ No especificada'}")
         
-        if info.presupuesto_min or info.presupuesto_max:
+        if info.sin_limite_presupuesto:
+            lines.append("💰 Presupuesto: ✅ Sin límite de presupuesto")
+        elif info.presupuesto_min or info.presupuesto_max:
             presupuesto_str = ""
             if info.presupuesto_min and info.presupuesto_max:
                 presupuesto_str = f"{info.presupuesto_min} - {info.presupuesto_max}€"
@@ -552,7 +582,8 @@ class QuestionerAgent(BaseAgent):
         if not info.categoria_producto:
             missing.append("❌ Categoría de producto (CRÍTICO)")
         
-        if not info.presupuesto_min and not info.presupuesto_max:
+        # Si no hay límite de presupuesto, no falta información de presupuesto
+        if not info.sin_limite_presupuesto and not info.presupuesto_min and not info.presupuesto_max:
             missing.append("❌ Presupuesto aproximado (CRÍTICO)")
         
         if not info.uso_principal and len(info.caracteristicas_clave) == 0:
@@ -631,7 +662,7 @@ class QuestionerAgent(BaseAgent):
         
         try:
             chain = summary_prompt | self.llm
-            result = chain.invoke({
+            result = self._invoke_with_rate_limit(chain, {
                 "conversation": conversation_history
             })
             
@@ -719,6 +750,7 @@ class QuestionerAgent(BaseAgent):
             "categoria_producto": info.categoria_producto,
             "presupuesto_min": info.presupuesto_min,
             "presupuesto_max": info.presupuesto_max,
+            "sin_limite_presupuesto": info.sin_limite_presupuesto,
             "uso_principal": info.uso_principal,
             "caracteristicas_clave": info.caracteristicas_clave,
             "preferencias_marca": info.preferencias_marca,
